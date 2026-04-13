@@ -1,0 +1,1356 @@
+/* ============================================
+   DESIGN SYSTEM CONFIG — APA 7th Edition
+   Based on APA Publication Manual, 7th Ed.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+
+    /* --- FONTS (APA 2.19) ---     */
+    --font-heading:             'Open Sans', sans-serif;
+    --font-body:                'Open Sans', sans-serif;
+    --font-figure:              'Open Sans', sans-serif;
+    --font-code:                'Open Sans', sans-serif;
+    --text-transform:           none;
+
+    /* --- FONT SIZES --- */
+    --size-h1:                  32px;
+    --size-h2:                  24px;
+    --size-h3:                  18px;
+    --size-h4:                  16px;
+    --size-h5:                  16px;
+    --size-body:                15px;
+    --size-secondary:           16px;
+    --size-stat-number:         36px;
+    --size-footnote:            12px;
+    --size-figure-min:          10px;
+    --size-figure-max:          16px;
+
+    /* --- TEXT COLORS (black & white) --- */
+    --color-h1:                 #302F2B;
+    --color-h2:                 #302F2B;
+    --color-h3:                 #302F2B;
+    --color-body:               #302F2B;
+    --color-secondary:          #302F2B;
+    --color-hero-text:          #FFFFFF;
+
+    /* --- BACKGROUNDS (black & white) --- */
+    --bg-page:                  #FAFAFA;
+    --bg-hero:                  #302F2B;
+
+    /* --- PROGRESS BARS (grayscale) --- */
+    --bar-track:                #E0E0E0;
+    --bar-height:               12px;
+    --bar-radius:               6px;
+    --bar-fill-1:               #302F2B;
+    --bar-fill-2:               #1A1A1A;
+    --bar-fill-3:               #333333;
+    --bar-fill-4:               #4D4D4D;
+    --bar-fill-5:               #666666;
+    --bar-fill-6:               #808080;
+    --bar-fill-7:               #999999;
+
+    /* --- MILESTONE DOTS --- */
+    --dot-size:                 10px;
+    --dot-1:                    #302F2B;
+
+    /* --- DIVIDERS --- */
+    --divider-color:            #302F2B;
+    --divider-style:            solid;
+
+    /* --- LAYOUT --- */
+    --max-width:                960px;
+    --section-padding:          36px;
+    --page-margin:              0;
+    --image-size:               100%;
+
+    /* --- APA SPACING (adapted for presentation) --- */
+    --line-height:              1.7;
+    --paragraph-indent:         0;
+    --hanging-indent:           0.5in;
+    --block-quote-indent:       0.5in;
+    --table-stub-indent:        0.15in;
+}
+
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-page);
+    color: var(--color-body);
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+    text-transform: var(--text-transform);
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ============================================
+   HEADINGS (APA 2.27, Table 2.3)
+   All headings use the same font/size as body.
+   Differentiated by weight, style, alignment.
+   ============================================ */
+
+h1 {
+    font-family: var(--font-heading);
+    font-size: var(--size-h1);
+    color: var(--color-h1);
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    font-size: var(--size-h2);
+    color: var(--color-h2);
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: var(--size-h3);
+    color: var(--color-h3);
+    font-weight: 600;
+    font-style: normal;
+    text-align: left;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+/* Level 4: Indented 0.5in, Bold, Title Case, Ending With Period.
+   Text begins on the same line (use <span> for inline) */
+h4 {
+    font-family: var(--font-heading);
+    font-size: var(--size-h4);
+    color: var(--color-body);
+    font-weight: bold;
+    font-style: normal;
+    text-align: left;
+    text-indent: var(--paragraph-indent);
+    display: inline;
+    line-height: var(--line-height);
+    margin: 0;
+}
+
+/* Level 5: Indented 0.5in, Bold Italic, Title Case, Ending With Period.
+   Text begins on the same line */
+h5 {
+    font-family: var(--font-heading);
+    font-size: var(--size-h5);
+    color: var(--color-body);
+    font-weight: bold;
+    font-style: italic;
+    text-align: left;
+    text-indent: var(--paragraph-indent);
+    display: inline;
+    line-height: var(--line-height);
+    margin: 0;
+}
+
+
+/* ============================================
+   SECTION LABELS (APA 2.28)
+   "Abstract", "References", paper title on
+   first page of body — centered, bold
+   ============================================ */
+
+.section-label {
+    text-align: center;
+    font-weight: bold;
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+}
+
+
+/* ============================================
+   PARAGRAPHS (APA 2.23–2.24)
+   Left-aligned, ragged right, 0.5in first-line
+   indent, double-spaced, no extra spacing
+   ============================================ */
+
+p {
+    text-align: left;
+    text-indent: 0;
+    line-height: var(--line-height);
+    margin: 0 0 8px;
+}
+
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.no-transform {
+    text-transform: none;
+}
+
+.no-indent {
+    text-indent: 0;
+}
+
+.col-1 { grid-column: 1; }
+.col-2 { grid-column: 2; }
+.col-3 { grid-column: 3; }
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.label-intro {
+    margin-bottom: 0;
+}
+
+.spacer {
+    height: var(--section-padding);
+}
+
+.half-spacer {
+    height: calc(var(--section-padding) / 2);
+}
+
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: var(--section-padding) 0;
+}
+
+
+/* ============================================
+   PAGE HEADER (APA 2.18)
+   Running head: flush left, ALL CAPS, max 50 chars
+   Page number: flush right
+   ============================================ */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+    margin-bottom: calc(var(--line-height) * 1em);
+}
+
+.running-head {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: var(--size-body);
+}
+
+.page-number {
+    text-align: right;
+    font-size: var(--size-body);
+}
+
+
+/* ============================================
+   TITLE PAGE (APA 2.3–2.7)
+   Title: bold, centered, upper half of page
+   Byline: centered, standard font
+   Affiliation: centered, standard font
+   ============================================ */
+
+/* Title page styles kept for standalone APA docs */
+.title-page {
+    text-align: center;
+    padding-top: 3em;
+}
+
+.title-page .paper-title {
+    font-weight: 700;
+    font-size: var(--size-h1);
+    text-align: center;
+}
+
+.title-page .byline {
+    font-weight: normal;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.title-page .affiliation {
+    font-weight: normal;
+    text-align: center;
+}
+
+
+/* ============================================
+   HERO SECTION
+   (Adapted for APA — minimal, centered title)
+   ============================================ */
+
+.hero {
+    background: var(--bg-hero);
+    padding: 56px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: none;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero h1 {
+    color: var(--color-hero-text);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5px;
+    font-size: var(--size-h1);
+    text-align: center;
+}
+
+.hero-subtitle {
+    color: #FFFFFF;
+    font-size: var(--size-h3);
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.mini-hero {
+    padding: 32px 0;
+}
+
+.mini-hero h1 {
+    font-size: var(--size-h2);
+}
+
+
+/* ============================================
+   ABSTRACT (APA 2.9–2.10)
+   Label centered/bold, single paragraph,
+   first line NOT indented, max 250 words
+   ============================================ */
+
+.abstract {
+    margin-top: 0;
+}
+
+.abstract p {
+    text-indent: 0;
+}
+
+.abstract .keywords {
+    text-indent: var(--paragraph-indent);
+}
+
+.abstract .keywords-label {
+    font-style: italic;
+}
+
+
+/* ============================================
+   DEMOGRAPHICS
+   ============================================ */
+
+.demographics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px 32px;
+}
+
+.demo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.demo-label {
+    font-size: var(--size-secondary);
+    color: var(--color-secondary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.demo-value {
+    font-size: var(--size-body);
+    color: var(--color-body);
+}
+
+.demo-description {
+    padding-left: var(--paragraph-indent);
+    display: inline-block;
+    margin-top: 0;
+}
+
+
+/* ============================================
+   DIVIDER (APA 7.17: horizontal rules)
+   ============================================ */
+
+.divider {
+    border: none;
+    border-top: 1px var(--divider-style) var(--divider-color);
+    margin: 0;
+    width: 100%;
+}
+
+
+/* ============================================
+   FREE TEXT
+   ============================================ */
+
+.free-text {
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+    text-indent: var(--paragraph-indent);
+    max-width: var(--max-width);
+}
+
+
+/* ============================================
+   BLOCK QUOTATION (APA 8.27)
+   40+ words: indent entire block 0.5in,
+   double-spaced, no quotation marks.
+   Second+ paragraphs: additional 0.5in indent.
+   ============================================ */
+
+blockquote,
+.block-quotation {
+    margin: 0;
+    padding: 0;
+    padding-left: var(--block-quote-indent);
+    font-size: var(--size-body);
+    font-style: normal;
+    color: var(--color-body);
+    line-height: var(--line-height);
+    border-left: none;
+}
+
+blockquote p,
+.block-quotation p {
+    text-indent: 0;
+}
+
+blockquote p + p,
+.block-quotation p + p {
+    text-indent: var(--paragraph-indent);
+}
+
+.styled-quote {
+    font-size: var(--size-body);
+    font-style: normal;
+    color: var(--color-body);
+    padding: 0;
+    padding-left: var(--block-quote-indent);
+    border-left: none;
+    line-height: var(--line-height);
+    margin-bottom: 0;
+}
+
+.styled-quote cite {
+    display: block;
+    margin-top: 0;
+    font-size: var(--size-body);
+    color: var(--color-body);
+    font-style: normal;
+}
+
+
+/* ============================================
+   BULLET NARRATIVE / LISTS (APA 6.49–6.52)
+   ============================================ */
+
+/* Bulleted lists */
+.bullet-narrative {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-narrative li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+    line-height: var(--line-height);
+}
+
+.bullet-narrative li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    background: var(--bar-fill-3);
+}
+
+/* Numbered lists (APA 6.51): Arabic numeral + period */
+.numbered-list {
+    list-style: decimal;
+    padding-left: var(--paragraph-indent);
+    counter-reset: none;
+}
+
+.numbered-list li {
+    position: relative;
+    padding-left: 0;
+    margin-bottom: 0;
+    line-height: var(--line-height);
+    counter-increment: none;
+}
+
+.numbered-list li::before {
+    content: none;
+}
+
+
+/* ============================================
+   REFERENCE LIST (APA 2.12)
+   Hanging indent: first line flush left,
+   subsequent lines indented 0.5in
+   ============================================ */
+
+.reference-list p,
+.reference-entry {
+    text-indent: calc(-1 * var(--hanging-indent));
+    padding-left: var(--hanging-indent);
+    text-align: left;
+    line-height: var(--line-height);
+    margin: 0;
+}
+
+
+/* ============================================
+   TABLES (APA 7.8–7.21)
+   Table number: bold, flush left
+   Title: italic, title case, flush left
+   Borders: top, bottom, below headers only
+   No vertical borders, no cell shading
+   ============================================ */
+
+.table-number {
+    font-weight: 700;
+    text-align: left;
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+}
+
+.table-title {
+    font-style: italic;
+    font-weight: normal;
+    text-align: left;
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+    margin-bottom: 8px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    border-top: 2px solid var(--color-h1);
+    border-bottom: 2px solid var(--color-h1);
+}
+
+.styled-table thead th {
+    font-family: var(--font-heading);
+    font-size: var(--size-body);
+    font-weight: 600;
+    color: var(--color-h2);
+    text-align: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.styled-table tbody td {
+    padding: 10px 16px;
+    color: var(--color-body);
+    border-bottom: 1px solid #E0E0E0;
+    text-align: center;
+}
+
+.styled-table tbody td:first-child {
+    text-align: left;
+}
+
+.styled-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.styled-table tbody tr:nth-child(even) {
+    background: none;
+}
+
+/* Table notes: flush left, double-spaced */
+.table-note {
+    text-align: left;
+    text-indent: 0;
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+}
+
+.table-note-general::before {
+    content: "Note. ";
+    font-style: italic;
+}
+
+
+/* ============================================
+   FIGURES (APA 7.22–7.36)
+   Figure number: bold, flush left
+   Title: italic, title case, flush left
+   Image: sans-serif font, 8–14pt
+   ============================================ */
+
+.figure-number {
+    font-weight: bold;
+    text-align: left;
+    text-indent: 0;
+    line-height: var(--line-height);
+}
+
+.figure-title {
+    font-style: italic;
+    font-weight: normal;
+    text-align: left;
+    text-indent: 0;
+    line-height: var(--line-height);
+}
+
+.figure-image {
+    font-family: var(--font-figure);
+    font-size: 11pt;
+}
+
+.figure-note {
+    text-align: left;
+    text-indent: 0;
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+}
+
+
+/* ============================================
+   FOOTNOTES (APA 2.13)
+   Bottom of page: single-spaced, 10pt
+   Separate page: double-spaced, indented
+   ============================================ */
+
+.footnote {
+    font-size: var(--size-footnote);
+    line-height: 1;
+}
+
+.footnote-page .footnote {
+    font-size: var(--size-body);
+    line-height: var(--line-height);
+    text-indent: var(--paragraph-indent);
+}
+
+
+/* ============================================
+   APPENDIX (APA 2.14)
+   Label and title: centered, bold
+   Each appendix on a new page
+   ============================================ */
+
+.appendix-label {
+    text-align: center;
+    font-weight: bold;
+    text-indent: 0;
+    line-height: var(--line-height);
+}
+
+
+/* ============================================
+   IMAGE PLACEHOLDERS
+   ============================================ */
+
+.image-placeholder {
+    width: var(--image-size);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    margin: 0;
+    border: 1px solid var(--divider-color);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    font-size: var(--size-body);
+    letter-spacing: 0;
+}
+
+
+/* ============================================
+   DRAWINGS
+   ============================================ */
+
+.drawing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.drawing-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.drawing-grid .image-placeholder {
+    width: 100%;
+    max-width: 100%;
+    height: unset;
+    aspect-ratio: 1;
+    margin: 0;
+}
+
+.drawing-label {
+    font-size: var(--size-body);
+    color: var(--color-body);
+    font-weight: bold;
+    margin-bottom: 0;
+    letter-spacing: 0;
+}
+
+.paper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #FFFFFF;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.paper canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+
+/* ============================================
+   PROGRESS BAR COMPONENT
+   ============================================ */
+
+.progress-group {
+    margin-bottom: calc(var(--line-height) * 1em);
+}
+
+.progress-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.progress-label {
+    font-size: var(--size-body);
+    color: var(--color-body);
+    letter-spacing: 0;
+}
+
+.progress-value {
+    font-size: var(--size-body);
+    color: var(--color-body);
+    font-family: var(--font-body);
+}
+
+.progress-track {
+    width: 100%;
+    height: var(--bar-height);
+    background: var(--bar-track);
+    border-radius: var(--bar-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: var(--bar-radius);
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.progress-fill::after {
+    content: none;
+}
+
+/* Color rotation — grayscale 7-color cycle */
+.progress-list > .progress-group:nth-child(7n+1) .progress-fill { background: var(--bar-fill-1); }
+.progress-list > .progress-group:nth-child(7n+2) .progress-fill { background: var(--bar-fill-2); }
+.progress-list > .progress-group:nth-child(7n+3) .progress-fill { background: var(--bar-fill-3); }
+.progress-list > .progress-group:nth-child(7n+4) .progress-fill { background: var(--bar-fill-4); }
+.progress-list > .progress-group:nth-child(7n+5) .progress-fill { background: var(--bar-fill-5); }
+.progress-list > .progress-group:nth-child(7n+6) .progress-fill { background: var(--bar-fill-6); }
+.progress-list > .progress-group:nth-child(7n+7) .progress-fill { background: var(--bar-fill-7); }
+
+
+/* ============================================
+   CALLOUT BOXES
+   (Adapted for APA — minimal styling)
+   ============================================ */
+
+.callout {
+    padding: 1px 24px 10px;
+    border-left: 4px solid #302F2B;
+    border-radius: 0 8px 8px 0;
+    background: none;
+    margin-bottom: 2px;
+}
+
+.callout-title {
+    font-family: var(--font-heading);
+    font-size: var(--size-h3);
+    color: var(--color-h2);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.callout-warm {
+    border-left-color: #302F2B;
+    background: none;
+}
+
+.callout-clay {
+    border-left-color: #666666;
+    background: none;
+}
+
+.callout-light {
+    border-left-color: #999999;
+    background: none;
+}
+
+
+/* ============================================
+   CARD
+   ============================================ */
+
+.card {
+    background: #FFFFFF;
+    border: 1px solid var(--divider-color);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: var(--size-h3);
+    color: var(--color-h2);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+
+/* ============================================
+   STAT CARD
+   ============================================ */
+
+.stat-card {
+    background: #FFFFFF;
+    border: 1px solid var(--divider-color);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: var(--size-stat-number);
+    color: var(--color-h1);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: var(--size-secondary);
+    color: var(--color-secondary);
+    margin-top: 6px;
+}
+
+
+/* ============================================
+   CHECKLIST
+   ============================================ */
+
+.checklist {
+    list-style: none;
+    padding: 0;
+    padding-left: var(--paragraph-indent);
+}
+
+.checklist li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 0;
+    line-height: var(--line-height);
+}
+
+.checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--color-body);
+    border-radius: 0;
+}
+
+.checklist li.checked::before {
+    background: var(--color-body);
+    border-color: var(--color-body);
+}
+
+.checklist li.checked::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 9px;
+    width: 8px;
+    height: 4px;
+    border-left: 2px solid var(--bg-page);
+    border-bottom: 2px solid var(--bg-page);
+    transform: rotate(-45deg);
+}
+
+
+/* ============================================
+   TWO-COLUMN / SIDE-BY-SIDE
+   ============================================ */
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+
+/* ============================================
+   ACCORDION (CSS-ONLY)
+   ============================================ */
+
+.accordion details {
+    border: 1px solid var(--divider-color);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.accordion summary {
+    font-family: var(--font-heading);
+    font-size: var(--size-h3);
+    color: var(--color-h2);
+    font-weight: 600;
+    padding: 14px 20px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.accordion summary::before {
+    content: '+ ';
+    color: var(--color-secondary);
+}
+
+.accordion details[open] summary::before {
+    content: '- ';
+}
+
+.accordion .accordion-body {
+    padding: 0 20px 16px;
+    font-size: var(--size-body);
+    color: var(--color-body);
+}
+
+
+/* ============================================
+   BADGE / TAG
+   ============================================ */
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 0;
+    font-size: var(--size-body);
+    font-family: var(--font-body);
+    letter-spacing: 0;
+}
+
+.badge-clay {
+    background: #E0E0E0;
+    color: var(--color-body);
+}
+
+.badge-warm {
+    background: #333333;
+    color: #FFFFFF;
+}
+
+.badge-sepia {
+    background: #666666;
+    color: #FFFFFF;
+}
+
+.badge-outline {
+    background: transparent;
+    border: 1px solid var(--color-body);
+    color: var(--color-body);
+}
+
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+
+.timeline {
+    position: relative;
+    padding-left: 32px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--bar-fill-7);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bar-fill-3);
+    border: 3px solid var(--bg-page);
+}
+
+.timeline-date {
+    font-family: var(--font-heading);
+    font-size: var(--size-h3);
+    color: var(--color-h2);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.timeline-content {
+    font-size: var(--size-body);
+    color: var(--color-body);
+}
+
+
+/* ============================================
+   DEFINITION LIST
+   ============================================ */
+
+.def-list dt {
+    font-family: var(--font-body);
+    font-size: var(--size-body);
+    color: var(--color-body);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.def-list dd {
+    font-size: var(--size-body);
+    color: var(--color-body);
+    margin-left: 0;
+    padding-left: var(--paragraph-indent);
+    margin-bottom: 0;
+    border-left: none;
+}
+
+
+/* ============================================
+   HIGHLIGHT / MARKER
+   ============================================ */
+
+.highlight {
+    background: none;
+    padding: 1px 4px;
+    border-radius: 0;
+}
+
+.highlight-warm {
+    background: none;
+    padding: 1px 4px;
+    border-radius: 0;
+}
+
+.highlight-clay {
+    background: none;
+    padding: 1px 4px;
+    border-radius: 0;
+}
+
+
+/* ============================================
+   SEPARATOR (DECORATIVE)
+   ============================================ */
+
+.dot-separator {
+    text-align: center;
+    margin: 0;
+    color: var(--color-body);
+    font-size: var(--size-body);
+    letter-spacing: 8px;
+}
+
+
+/* ============================================
+   LIKERT / DOT SCALE
+   ============================================ */
+
+.likert-group {
+    margin-bottom: calc(var(--line-height) * 1em);
+}
+
+.likert-label {
+    font-size: var(--size-body);
+    color: var(--color-body);
+    letter-spacing: 0;
+    margin-bottom: 4px;
+}
+
+.likert-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.likert-dot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    border: 1px solid var(--color-body);
+    background: transparent;
+}
+
+.likert-dot.filled {
+    background: var(--color-body);
+}
+
+
+/* ============================================
+   CONCENTRIC RINGS
+   ============================================ */
+
+.rings-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: calc(var(--line-height) * 1em);
+}
+
+.ring-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.ring-label {
+    font-size: var(--size-body);
+    color: var(--color-body);
+    letter-spacing: 0;
+    text-align: center;
+    max-width: 120px;
+}
+
+.concentric-ring {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.concentric-ring .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--color-body);
+    background: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.concentric-ring .ring.filled {
+    background: none;
+    border-color: var(--color-body);
+}
+
+/* Default (sm) */
+.concentric-ring .ring-1 { width: 100px; height: 100px; }
+.concentric-ring .ring-2 { width: 76px;  height: 76px; }
+.concentric-ring .ring-3 { width: 52px;  height: 52px; }
+.concentric-ring .ring-4 { width: 28px;  height: 28px; }
+
+/* Medium */
+.concentric-ring.ring-md         { width: 150px; height: 150px; }
+.concentric-ring.ring-md .ring-1 { width: 150px; height: 150px; }
+.concentric-ring.ring-md .ring-2 { width: 114px; height: 114px; }
+.concentric-ring.ring-md .ring-3 { width: 78px;  height: 78px; }
+.concentric-ring.ring-md .ring-4 { width: 42px;  height: 42px; }
+
+/* Large */
+.concentric-ring.ring-lg         { width: 200px; height: 200px; }
+.concentric-ring.ring-lg .ring-1 { width: 200px; height: 200px; }
+.concentric-ring.ring-lg .ring-2 { width: 152px; height: 152px; }
+.concentric-ring.ring-lg .ring-3 { width: 104px; height: 104px; }
+.concentric-ring.ring-lg .ring-4 { width: 56px;  height: 56px; }
+
+/* Extra Large */
+.concentric-ring.ring-xl         { width: 260px; height: 260px; }
+.concentric-ring.ring-xl .ring-1 { width: 260px; height: 260px; }
+.concentric-ring.ring-xl .ring-2 { width: 198px; height: 198px; }
+.concentric-ring.ring-xl .ring-3 { width: 136px; height: 136px; }
+.concentric-ring.ring-xl .ring-4 { width: 74px;  height: 74px; }
+
+.concentric-ring .ring.filled-solid {
+    background: var(--color-body);
+}
+
+.concentric-ring .ring.filled-red {
+    background: none;
+    border-color: var(--color-body);
+}
+
+.concentric-ring .ring.filled-red-solid {
+    background: #333333;
+    border-color: #333333;
+}
+
+.concentric-ring .ring.filled-clay {
+    background: none;
+    border-color: var(--color-body);
+}
+
+.concentric-ring .ring.filled-clay-solid {
+    background: #666666;
+    border-color: #666666;
+}
+
+.concentric-ring .ring.filled-dark {
+    background: none;
+    border-color: var(--color-body);
+}
+
+.concentric-ring .ring.filled-dark-solid {
+    background: #1A1A1A;
+    border-color: #1A1A1A;
+}
+
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 700px) {
+    :root {
+        --size-h1: 24px;
+        --size-h2: 20px;
+        --size-h3: 16px;
+        --size-body: 14px;
+        --size-stat-number: 28px;
+    }
+
+    .demographics-grid,
+    .card-grid,
+    .card-grid-3,
+    .two-col,
+    .three-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================
+   PRINT STYLES (APA papers are print-first)
+   ============================================ */
+
+@media print {
+    body {
+        margin: var(--page-margin);
+        font-size: 12pt;
+        line-height: 2;
+    }
+
+    .page-header {
+        position: running(header);
+    }
+
+    @page {
+        size: 8.5in 11in;
+        margin: 1in;
+    }
+
+    .hero {
+        background: none;
+        padding: 0;
+    }
+
+    .animate-in {
+        animation: none;
+    }
+}

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single-Case Design — Intervention Analysis Template</title>
+<link rel="stylesheet" href="../../config/configapa.css">
+<style>
+/* ============================================
+   HERO OVERRIDE
+   ============================================ */
+.hero { --bg-hero: #071A0B; --color-hero-text: #FFFBF0; }
+:root { --bg-page: #FFFBF0; --color-body: #071A0B; --size-chart-text: 12px; }
+
+/* ============================================
+   FIGURE 1 — DARK PANEL
+   ============================================ */
+.fig-dark {
+    --color-body: #FFFBF0;
+    --bar-track: rgba(255,251,240,0.2);
+    --size-body: 20px;
+    --size-chart-text: 14px;
+    background: #071A0B;
+    color: var(--color-body);
+    padding: 32px 40px;
+    border-radius: 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+}
+.fig-dark .figure-number { color: var(--color-body); font-size: var(--size-body); }
+.fig-dark .figure-title { color: var(--color-body); font-size: var(--size-body); margin-top: 0; margin-bottom: 2em; }
+.fig-dark .figure-note { color: var(--color-body); font-size: calc(var(--size-chart-text) - 2px); }
+.fig-dark svg .t-axis,
+.fig-dark svg .t-axis-title,
+.fig-dark svg .t-tick,
+.fig-dark svg .t-phase,
+.fig-dark svg .t-mean,
+.fig-dark svg .t-mean-int    { fill: var(--color-body); }
+.fig-dark svg .axis,
+.fig-dark svg .phase-line,
+.fig-dark svg .trendline,
+.fig-dark svg .data-bl,
+.fig-dark svg .data-int       { stroke: var(--color-body); }
+.fig-dark svg .trendline      { opacity: 1; }
+.fig-dark svg .pt-bl,
+.fig-dark svg .pt-int         { fill: var(--color-body); }
+.fig-dark svg .axis-light,
+.fig-dark svg .grid           { stroke: var(--bar-track); }
+
+/* ============================================
+   CHART SYSTEM — all values from configapa.css
+   ============================================ */
+
+.chart-container {
+    width: 100%;
+    margin: 0 auto;
+}
+.chart-container svg {
+    width: 100%;
+    display: block;
+    font-family: var(--font-body);
+}
+
+/* --- Text classes --- */
+svg .t-axis,
+svg .t-axis-title,
+svg .t-tick,
+svg .t-phase {
+    font-size: var(--size-chart-text);
+    fill: var(--color-body);
+}
+svg .t-axis-title,
+svg .t-phase {
+    font-weight: normal;
+}
+svg .t-mean,
+svg .t-mean-int {
+    font-size: var(--size-chart-text);
+    font-style: italic;
+    fill: var(--color-body);
+}
+
+/* --- Line classes --- */
+svg .axis {
+    stroke: var(--color-body);
+    stroke-width: 1.5;
+}
+svg .axis-light {
+    stroke: var(--bar-track);
+    stroke-width: 1;
+}
+svg .grid {
+    stroke: var(--bar-track);
+    stroke-width: 0.5;
+}
+svg .phase-line {
+    stroke: var(--color-body);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
+}
+svg .trendline {
+    stroke: var(--color-body);
+    stroke-width: 0.8;
+    stroke-dasharray: 3 3;
+    opacity: 0.4;
+}
+svg .criterion-line {
+    stroke: var(--bar-fill-7);
+    stroke-width: 2;
+    stroke-dasharray: 8 4;
+}
+
+/* --- Data classes --- */
+svg .data-bl {
+    fill: none;
+    stroke: var(--color-body);
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+svg .data-int {
+    fill: none;
+    stroke: var(--color-body);
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+svg .pt-bl {
+    fill: var(--color-body);
+}
+svg .pt-int {
+    fill: var(--color-body);
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="container">
+        <h1>Single-Case Experimental Design</h1>
+        <p class="hero-subtitle">Intervention Analysis Template</p>
+    </div>
+</div>
+
+<div class="container">
+
+<!-- CASE INFORMATION -->
+<section>
+    <h2>Case Information</h2>
+    <div class="demographics-grid">
+        <div class="demo-item">
+            <span class="demo-label">Client</span>
+            <span class="demo-value">[Name]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Age / Grade</span>
+            <span class="demo-value">[Age / Grade]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Date</span>
+            <span class="demo-value">[Date]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Target Behavior</span>
+            <span class="demo-value">[Operationally defined behavior]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Setting</span>
+            <span class="demo-value">[Classroom / home / clinic]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Observer / Recorder</span>
+            <span class="demo-value">[Name]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Intervention</span>
+            <span class="demo-value">[Brief description of intervention]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Measurement</span>
+            <span class="demo-value">[Frequency / duration / % accuracy]</span>
+        </div>
+        <div class="demo-item">
+            <span class="demo-label">Design Type</span>
+            <span class="demo-value">[A-B / A-B-A-B / Multiple baseline / Changing criterion]</span>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- FIGURE 1: A-B DESIGN -->
+<section class="fig-dark">
+    <p class="figure-number">Figure 1</p>
+    <p class="figure-title">A-B Design: Baseline and Intervention Phases</p>
+
+    <div class="chart-container">
+        <svg viewBox="0 -20 800 380">
+            <line class="axis" x1="70" y1="30" x2="70" y2="240"/>
+            <line class="axis" x1="70" y1="240" x2="760" y2="240"/>
+            <line class="grid" x1="70" y1="198" x2="760" y2="198"/>
+            <line class="grid" x1="70" y1="156" x2="760" y2="156"/>
+            <line class="grid" x1="70" y1="114" x2="760" y2="114"/>
+            <line class="grid" x1="70" y1="72" x2="760" y2="72"/>
+            <line class="grid" x1="70" y1="30" x2="760" y2="30"/>
+
+            <text class="t-axis" x="56" y="244" text-anchor="end">0</text>
+            <text class="t-axis" x="56" y="202" text-anchor="end">2</text>
+            <text class="t-axis" x="56" y="160" text-anchor="end">4</text>
+            <text class="t-axis" x="56" y="118" text-anchor="end">6</text>
+            <text class="t-axis" x="56" y="76" text-anchor="end">8</text>
+            <text class="t-axis" x="56" y="34" text-anchor="end">10</text>
+            <text class="t-axis-title" x="20" y="140" text-anchor="middle" transform="rotate(-90 20 140)">Frequency</text>
+
+            <line class="phase-line" x1="340" y1="20" x2="340" y2="248"/>
+
+            <text class="t-phase" x="205" y="4" text-anchor="middle">Baseline (A)</text>
+            <text class="t-phase" x="550" y="4" text-anchor="middle">Intervention (B)</text>
+            <text class="t-axis-title" x="415" y="302" text-anchor="middle">Session</text>
+
+            <text class="t-tick" x="120" y="266" text-anchor="middle">1</text>
+            <text class="t-tick" x="175" y="266" text-anchor="middle">2</text>
+            <text class="t-tick" x="230" y="266" text-anchor="middle">3</text>
+            <text class="t-tick" x="285" y="266" text-anchor="middle">4</text>
+            <text class="t-tick" x="390" y="266" text-anchor="middle">5</text>
+            <text class="t-tick" x="445" y="266" text-anchor="middle">6</text>
+            <text class="t-tick" x="500" y="266" text-anchor="middle">7</text>
+            <text class="t-tick" x="555" y="266" text-anchor="middle">8</text>
+            <text class="t-tick" x="610" y="266" text-anchor="middle">9</text>
+            <text class="t-tick" x="665" y="266" text-anchor="middle">10</text>
+            <text class="t-tick" x="720" y="266" text-anchor="middle">11</text>
+
+            <polyline class="data-bl" points="120,93 175,72 230,114 285,93"/>
+            <circle class="pt-bl" cx="120" cy="93" r="4"/>
+            <circle class="pt-bl" cx="175" cy="72" r="4"/>
+            <circle class="pt-bl" cx="230" cy="114" r="4"/>
+            <circle class="pt-bl" cx="285" cy="93" r="4"/>
+
+            <line class="trendline" x1="100" y1="85" x2="325" y2="102"/>
+            <text class="t-mean" x="297" y="116">b = &#8722;0.20</text>
+
+            <polyline class="data-int" points="390,135 445,156 500,177 555,177 610,198 665,198 720,219"/>
+            <circle class="pt-int" cx="390" cy="135" r="4"/>
+            <circle class="pt-int" cx="445" cy="156" r="4"/>
+            <circle class="pt-int" cx="500" cy="177" r="4"/>
+            <circle class="pt-int" cx="555" cy="177" r="4"/>
+            <circle class="pt-int" cx="610" cy="198" r="4"/>
+            <circle class="pt-int" cx="665" cy="198" r="4"/>
+            <circle class="pt-int" cx="720" cy="219" r="4"/>
+
+            <line class="trendline" x1="378" y1="139" x2="740" y2="223"/>
+            <text class="t-mean" x="712" y="237">b = &#8722;0.61</text>
+        </svg>
+    </div>
+
+    <p class="figure-note table-note-general">Closed circles = baseline observations; gray circles = intervention observations. Dashed horizontal lines represent phase means. Vertical dashed line indicates point of intervention introduction. All data points are placeholders.</p>
+</section>
+
+<hr class="divider">
+
+<!-- FIGURE 2: A-B-A-B WITHDRAWAL -->
+<section>
+    <p class="figure-number">Figure 2</p>
+    <p class="figure-title">A-B-A-B Withdrawal Design: Demonstrating Experimental Control Through Reversal</p>
+
+    <div class="chart-container">
+        <svg viewBox="0 0 800 300">
+            <line class="axis-light" x1="70" y1="30" x2="70" y2="240"/>
+            <line class="axis" x1="70" y1="240" x2="760" y2="240"/>
+            <line class="grid" x1="70" y1="198" x2="760" y2="198"/>
+            <line class="grid" x1="70" y1="156" x2="760" y2="156"/>
+            <line class="grid" x1="70" y1="114" x2="760" y2="114"/>
+            <line class="grid" x1="70" y1="72" x2="760" y2="72"/>
+            <line class="grid" x1="70" y1="30" x2="760" y2="30"/>
+
+            <text class="t-axis" x="60" y="244" text-anchor="end">0</text>
+            <text class="t-axis" x="60" y="202" text-anchor="end">2</text>
+            <text class="t-axis" x="60" y="160" text-anchor="end">4</text>
+            <text class="t-axis" x="60" y="118" text-anchor="end">6</text>
+            <text class="t-axis" x="60" y="76" text-anchor="end">8</text>
+            <text class="t-axis" x="60" y="34" text-anchor="end">10</text>
+            <text class="t-axis" x="24" y="140" text-anchor="middle" transform="rotate(-90 24 140)">Frequency</text>
+
+            <line class="phase-line" x1="244" y1="20" x2="244" y2="248"/>
+            <line class="phase-line" x1="418" y1="20" x2="418" y2="248"/>
+            <line class="phase-line" x1="592" y1="20" x2="592" y2="248"/>
+
+            <text class="t-phase" x="157" y="18" text-anchor="middle">A&#8321;</text>
+            <text class="t-phase" x="331" y="18" text-anchor="middle">B&#8321;</text>
+            <text class="t-phase" x="505" y="18" text-anchor="middle">A&#8322;</text>
+            <text class="t-phase" x="676" y="18" text-anchor="middle">B&#8322;</text>
+            <text class="t-axis" x="415" y="275" text-anchor="middle">Session</text>
+
+            <polyline class="data-bl" points="110,93 157,72 204,72"/>
+            <circle class="pt-bl" cx="110" cy="93" r="4"/>
+            <circle class="pt-bl" cx="157" cy="72" r="4"/>
+            <circle class="pt-bl" cx="204" cy="72" r="4"/>
+
+            <polyline class="data-int" points="284,135 331,177 378,198"/>
+            <circle class="pt-int" cx="284" cy="135" r="4"/>
+            <circle class="pt-int" cx="331" cy="177" r="4"/>
+            <circle class="pt-int" cx="378" cy="198" r="4"/>
+
+            <polyline class="data-bl" points="458,114 505,93 552,93"/>
+            <circle class="pt-bl" cx="458" cy="114" r="4"/>
+            <circle class="pt-bl" cx="505" cy="93" r="4"/>
+            <circle class="pt-bl" cx="552" cy="93" r="4"/>
+
+            <polyline class="data-int" points="632,177 676,198 720,219"/>
+            <circle class="pt-int" cx="632" cy="177" r="4"/>
+            <circle class="pt-int" cx="676" cy="198" r="4"/>
+            <circle class="pt-int" cx="720" cy="219" r="4"/>
+        </svg>
+    </div>
+
+    <p class="figure-note table-note-general">Black data points = baseline conditions (A&#8321;, A&#8322;); gray data points = intervention conditions (B&#8321;, B&#8322;). Behavior returns toward baseline levels during withdrawal, then decreases again upon re-introduction, demonstrating a functional relationship. All data points are placeholders.</p>
+</section>
+
+<hr class="divider">
+
+<!-- FIGURE 3: MULTIPLE BASELINE -->
+<section>
+    <p class="figure-number">Figure 3</p>
+    <p class="figure-title">Multiple Baseline Design Across Three Tiers</p>
+
+    <h3>Tier 1: [Behavior / Setting / Subject]</h3>
+    <div class="chart-container">
+        <svg viewBox="0 0 800 180">
+            <line class="axis-light" x1="70" y1="20" x2="70" y2="140"/>
+            <line class="axis" x1="70" y1="140" x2="760" y2="140"/>
+            <line class="grid" x1="70" y1="80" x2="760" y2="80"/>
+            <line class="grid" x1="70" y1="20" x2="760" y2="20"/>
+            <text class="t-tick" x="60" y="24" text-anchor="end">10</text>
+            <text class="t-tick" x="60" y="84" text-anchor="end">5</text>
+            <text class="t-tick" x="60" y="144" text-anchor="end">0</text>
+
+            <line class="phase-line" x1="310" y1="14" x2="310" y2="148"/>
+
+            <polyline class="data-bl" points="130,32 190,44 250,20 290,32"/>
+            <circle class="pt-bl" cx="130" cy="32" r="3.5"/>
+            <circle class="pt-bl" cx="190" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="250" cy="20" r="3.5"/>
+            <circle class="pt-bl" cx="290" cy="32" r="3.5"/>
+
+            <polyline class="data-int" points="350,56 410,80 470,92 530,92 590,104 650,104 710,116 740,116"/>
+            <circle class="pt-int" cx="350" cy="56" r="3.5"/>
+            <circle class="pt-int" cx="410" cy="80" r="3.5"/>
+            <circle class="pt-int" cx="470" cy="92" r="3.5"/>
+            <circle class="pt-int" cx="530" cy="92" r="3.5"/>
+            <circle class="pt-int" cx="590" cy="104" r="3.5"/>
+            <circle class="pt-int" cx="650" cy="104" r="3.5"/>
+            <circle class="pt-int" cx="710" cy="116" r="3.5"/>
+            <circle class="pt-int" cx="740" cy="116" r="3.5"/>
+        </svg>
+    </div>
+
+    <div class="half-spacer"></div>
+
+    <h3>Tier 2: [Behavior / Setting / Subject]</h3>
+    <div class="chart-container">
+        <svg viewBox="0 0 800 180">
+            <line class="axis-light" x1="70" y1="20" x2="70" y2="140"/>
+            <line class="axis" x1="70" y1="140" x2="760" y2="140"/>
+            <line class="grid" x1="70" y1="80" x2="760" y2="80"/>
+            <line class="grid" x1="70" y1="20" x2="760" y2="20"/>
+            <text class="t-tick" x="60" y="24" text-anchor="end">10</text>
+            <text class="t-tick" x="60" y="84" text-anchor="end">5</text>
+            <text class="t-tick" x="60" y="144" text-anchor="end">0</text>
+
+            <line class="phase-line" x1="490" y1="14" x2="490" y2="148"/>
+
+            <polyline class="data-bl" points="130,44 190,32 250,44 310,56 370,32 430,44 470,44"/>
+            <circle class="pt-bl" cx="130" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="190" cy="32" r="3.5"/>
+            <circle class="pt-bl" cx="250" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="310" cy="56" r="3.5"/>
+            <circle class="pt-bl" cx="370" cy="32" r="3.5"/>
+            <circle class="pt-bl" cx="430" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="470" cy="44" r="3.5"/>
+
+            <polyline class="data-int" points="530,80 590,92 650,104 710,116 740,116"/>
+            <circle class="pt-int" cx="530" cy="80" r="3.5"/>
+            <circle class="pt-int" cx="590" cy="92" r="3.5"/>
+            <circle class="pt-int" cx="650" cy="104" r="3.5"/>
+            <circle class="pt-int" cx="710" cy="116" r="3.5"/>
+            <circle class="pt-int" cx="740" cy="116" r="3.5"/>
+        </svg>
+    </div>
+
+    <div class="half-spacer"></div>
+
+    <h3>Tier 3: [Behavior / Setting / Subject]</h3>
+    <div class="chart-container">
+        <svg viewBox="0 0 800 180">
+            <line class="axis-light" x1="70" y1="20" x2="70" y2="140"/>
+            <line class="axis" x1="70" y1="140" x2="760" y2="140"/>
+            <line class="grid" x1="70" y1="80" x2="760" y2="80"/>
+            <line class="grid" x1="70" y1="20" x2="760" y2="20"/>
+            <text class="t-tick" x="60" y="24" text-anchor="end">10</text>
+            <text class="t-tick" x="60" y="84" text-anchor="end">5</text>
+            <text class="t-tick" x="60" y="144" text-anchor="end">0</text>
+
+            <line class="phase-line" x1="640" y1="14" x2="640" y2="148"/>
+
+            <polyline class="data-bl" points="130,56 170,44 210,44 250,32 290,56 340,44 390,32 440,44 500,44 620,44"/>
+            <circle class="pt-bl" cx="130" cy="56" r="3.5"/>
+            <circle class="pt-bl" cx="170" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="210" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="250" cy="32" r="3.5"/>
+            <circle class="pt-bl" cx="290" cy="56" r="3.5"/>
+            <circle class="pt-bl" cx="340" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="390" cy="32" r="3.5"/>
+            <circle class="pt-bl" cx="440" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="500" cy="44" r="3.5"/>
+            <circle class="pt-bl" cx="620" cy="44" r="3.5"/>
+
+            <polyline class="data-int" points="680,80 720,104 740,116"/>
+            <circle class="pt-int" cx="680" cy="80" r="3.5"/>
+            <circle class="pt-int" cx="720" cy="104" r="3.5"/>
+            <circle class="pt-int" cx="740" cy="116" r="3.5"/>
+        </svg>
+    </div>
+
+    <p class="figure-note table-note-general">Intervention was introduced in a staggered fashion across tiers. Concurrent baselines demonstrate that behavior change occurs only upon intervention introduction, ruling out maturation and history threats. All data points are placeholders.</p>
+</section>
+
+<hr class="divider">
+
+<!-- FIGURE 4: CHANGING CRITERION -->
+<section>
+    <p class="figure-number">Figure 4</p>
+    <p class="figure-title">Changing Criterion Design: Stepwise Criterion Shifts Demonstrating Behavioral Control</p>
+
+    <div class="chart-container">
+        <svg viewBox="0 0 800 300">
+            <line class="axis-light" x1="70" y1="30" x2="70" y2="240"/>
+            <line class="axis" x1="70" y1="240" x2="760" y2="240"/>
+            <line class="grid" x1="70" y1="198" x2="760" y2="198"/>
+            <line class="grid" x1="70" y1="156" x2="760" y2="156"/>
+            <line class="grid" x1="70" y1="114" x2="760" y2="114"/>
+            <line class="grid" x1="70" y1="72" x2="760" y2="72"/>
+            <line class="grid" x1="70" y1="30" x2="760" y2="30"/>
+
+            <text class="t-axis" x="60" y="244" text-anchor="end">0%</text>
+            <text class="t-axis" x="60" y="202" text-anchor="end">20%</text>
+            <text class="t-axis" x="60" y="160" text-anchor="end">40%</text>
+            <text class="t-axis" x="60" y="118" text-anchor="end">60%</text>
+            <text class="t-axis" x="60" y="76" text-anchor="end">80%</text>
+            <text class="t-axis" x="60" y="34" text-anchor="end">100%</text>
+            <text class="t-axis" x="24" y="140" text-anchor="middle" transform="rotate(-90 24 140)">% Accuracy</text>
+
+            <line class="phase-line" x1="210" y1="20" x2="210" y2="248"/>
+            <line class="phase-line" x1="350" y1="20" x2="350" y2="248"/>
+            <line class="phase-line" x1="490" y1="20" x2="490" y2="248"/>
+            <line class="phase-line" x1="630" y1="20" x2="630" y2="248"/>
+
+            <text class="t-phase" x="140" y="18" text-anchor="middle">Baseline</text>
+            <text class="t-phase" x="280" y="18" text-anchor="middle">Criterion 1</text>
+            <text class="t-phase" x="420" y="18" text-anchor="middle">Criterion 2</text>
+            <text class="t-phase" x="560" y="18" text-anchor="middle">Criterion 3</text>
+            <text class="t-phase" x="695" y="18" text-anchor="middle">Criterion 4</text>
+
+            <line class="criterion-line" x1="210" y1="198" x2="350" y2="198"/>
+            <line class="criterion-line" x1="350" y1="156" x2="490" y2="156"/>
+            <line class="criterion-line" x1="490" y1="114" x2="630" y2="114"/>
+            <line class="criterion-line" x1="630" y1="72" x2="760" y2="72"/>
+
+            <text class="t-axis" x="415" y="275" text-anchor="middle">Session</text>
+
+            <polyline class="data-bl" points="110,205 150,198 190,200"/>
+            <circle class="pt-bl" cx="110" cy="205" r="4"/>
+            <circle class="pt-bl" cx="150" cy="198" r="4"/>
+            <circle class="pt-bl" cx="190" cy="200" r="4"/>
+
+            <polyline class="data-int" points="240,200 270,193 300,198 330,195"/>
+            <circle class="pt-int" cx="240" cy="200" r="4"/>
+            <circle class="pt-int" cx="270" cy="193" r="4"/>
+            <circle class="pt-int" cx="300" cy="198" r="4"/>
+            <circle class="pt-int" cx="330" cy="195" r="4"/>
+
+            <polyline class="data-int" points="380,160 410,152 440,156 470,150"/>
+            <circle class="pt-int" cx="380" cy="160" r="4"/>
+            <circle class="pt-int" cx="410" cy="152" r="4"/>
+            <circle class="pt-int" cx="440" cy="156" r="4"/>
+            <circle class="pt-int" cx="470" cy="150" r="4"/>
+
+            <polyline class="data-int" points="520,120 550,110 580,114 610,106"/>
+            <circle class="pt-int" cx="520" cy="120" r="4"/>
+            <circle class="pt-int" cx="550" cy="110" r="4"/>
+            <circle class="pt-int" cx="580" cy="114" r="4"/>
+            <circle class="pt-int" cx="610" cy="106" r="4"/>
+
+            <polyline class="data-int" points="660,78 700,66 740,68"/>
+            <circle class="pt-int" cx="660" cy="78" r="4"/>
+            <circle class="pt-int" cx="700" cy="66" r="4"/>
+            <circle class="pt-int" cx="740" cy="68" r="4"/>
+        </svg>
+    </div>
+
+    <p class="figure-note table-note-general">Dashed horizontal lines represent criterion levels for each phase. Performance tracks criterion shifts, demonstrating that behavior change is a function of the intervention. Ideal for shaping procedures and gradual behavior change. All data points are placeholders.</p>
+</section>
+
+<hr class="divider">
+
+<!-- TABLE 1: PHASE SUMMARY -->
+<section>
+    <p class="table-number">Table 1</p>
+    <p class="table-title">Phase Summary Statistics</p>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th style="text-align:left">Phase</th>
+                <th>Sessions</th>
+                <th>Mean</th>
+                <th>Range</th>
+                <th>Trend</th>
+                <th>Level Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A&#8321; (Baseline)</td>
+                <td>[n]</td>
+                <td>[M]</td>
+                <td>[min&#8211;max]</td>
+                <td>[stable / accelerating / decelerating]</td>
+                <td>&#8212;</td>
+            </tr>
+            <tr>
+                <td>B&#8321; (Intervention)</td>
+                <td>[n]</td>
+                <td>[M]</td>
+                <td>[min&#8211;max]</td>
+                <td>[stable / accelerating / decelerating]</td>
+                <td>[&#916; from A&#8321;]</td>
+            </tr>
+            <tr>
+                <td>A&#8322; (Withdrawal)</td>
+                <td>[n]</td>
+                <td>[M]</td>
+                <td>[min&#8211;max]</td>
+                <td>[stable / accelerating / decelerating]</td>
+                <td>[&#916; from B&#8321;]</td>
+            </tr>
+            <tr>
+                <td>B&#8322; (Re-introduction)</td>
+                <td>[n]</td>
+                <td>[M]</td>
+                <td>[min&#8211;max]</td>
+                <td>[stable / accelerating / decelerating]</td>
+                <td>[&#916; from A&#8322;]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="table-note table-note-general">Replace bracketed values with observed data. Trend direction should be determined by visual inspection of the slope within each phase.</p>
+</section>
+
+<hr class="divider">
+
+<!-- VISUAL ANALYSIS CRITERIA -->
+<section>
+    <h2>Visual Analysis Criteria</h2>
+    <p>Six dimensions for evaluating single-case data (Kratochwill et al., 2010).</p>
+
+    <div class="spacer"></div>
+
+    <div class="card-grid-3">
+        <div class="card">
+            <p class="card-title">Level</p>
+            <p>Mean performance within a phase. Compare phase means to determine magnitude of effect.</p>
+        </div>
+        <div class="card">
+            <p class="card-title">Trend</p>
+            <p>Slope of data path within a phase. Accelerating, decelerating, or zero-celerating.</p>
+        </div>
+        <div class="card">
+            <p class="card-title">Variability</p>
+            <p>Spread of data around the mean or trend line. Less variability = greater confidence in observed effects.</p>
+        </div>
+        <div class="card">
+            <p class="card-title">Immediacy of Effect</p>
+            <p>Change at the phase boundary. Abrupt level change at the phase line strengthens causal inference.</p>
+        </div>
+        <div class="card">
+            <p class="card-title">Overlap</p>
+            <p>Proportion of data points shared across phases. Less overlap = stronger evidence of treatment effect.</p>
+        </div>
+        <div class="card">
+            <p class="card-title">Consistency</p>
+            <p>Replication of effects across phases or tiers. Similar patterns across replications = experimental control.</p>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- DESIGN SELECTION GUIDE -->
+<section>
+    <h2>Design Selection Guide</h2>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th style="text-align:left">Design</th>
+                <th style="text-align:left">When to Use</th>
+                <th style="text-align:left">What It Demonstrates</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A-B</td>
+                <td>Pre-post only; no withdrawal possible</td>
+                <td>Association between IV and DV</td>
+            </tr>
+            <tr>
+                <td>A-B-A-B</td>
+                <td>Reversible behavior; strong control needed</td>
+                <td>Functional relationship</td>
+            </tr>
+            <tr>
+                <td>Multiple Baseline</td>
+                <td>Irreversible behavior or ethical concerns with withdrawal</td>
+                <td>Generalization across contexts</td>
+            </tr>
+            <tr>
+                <td>Changing Criterion</td>
+                <td>Shaping; gradual, incremental behavior change</td>
+                <td>Dose-response control</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<hr class="divider">
+
+<!-- NOTES -->
+<section>
+    <h3>Notes</h3>
+    <ul class="bullet-narrative">
+        <li>All data points are placeholders &#8212; replace with observed case data upon collection.</li>
+        <li>Vertical dashed lines indicate point of intervention introduction, withdrawal, or criterion shift.</li>
+        <li>Horizontal dashed lines represent phase means (Figures 1&#8211;2) or criterion levels (Figure 4).</li>
+        <li>Designed for print at standard letter size (8.5 &#215; 11 in) or screen presentation.</li>
+    </ul>
+</section>
+
+</div>
+
+</body>
+</html>
