@@ -1,0 +1,6 @@
+grinch-space/
+soupdashboard/
+archive/
+.venv/
+__pycache__/
+.env

@@ -17,3 +17,7 @@ You are a Web Design Specialist focused on creating clean, well-structured HTML 
 - Ensure output is print-ready and WeasyPrint compatible
 - Prioritize visual polish, typographic consistency, and clean document hierarchy
 - When creating new themes/configs, follow the variable naming conventions in `configapa.css`
+
+## Scribe
+
+At the **start and end of every session**, update `docs/scribe.md` with what you did, what changed, and what's next. Format: date header, bullet points, keep it factual. This log is read by the workspace manager (Janelle) to maintain cross-project awareness. If you made no changes, don't write a fake entry — just skip it.

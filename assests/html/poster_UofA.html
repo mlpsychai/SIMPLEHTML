@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA Research Poster</title>
+    <link rel="stylesheet" href="../../config/configapa_UofA.css">
+    <style>
+        /* ============================================
+           POSTER LAYOUT — 36in x 24in
+           Matches Poster Template UA.pptx dimensions
+           ============================================ */
+
+        @page {
+            size: 36in 24in;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-page);
+        }
+
+        .poster {
+            width: 36in;
+            height: 24in;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-surface);
+            border: 64px solid var(--bg-hero);
+        }
+
+        /* --- HEADER BANNER --- 36in x 3.90in, Navy */
+        .poster-header {
+            width: 36in;
+            height: 3.90in;
+            background: var(--bg-hero);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 0.75in;
+        }
+
+        .poster-header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .poster-title {
+            font-family: var(--font-heading);
+            font-size: 60px;
+            font-weight: 700;
+            color: var(--color-inverse-text);
+            line-height: 1.2;
+            margin: 0;
+            text-align: center;
+        }
+
+        .poster-author {
+            font-family: var(--font-body);
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--color-inverse-text);
+            margin-top: 0.20in;
+            text-align: center;
+        }
+
+        .poster-affiliation {
+            font-family: var(--font-body);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--color-inverse-text);
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .poster-logo {
+            position: absolute;
+            right: 3.5in;
+            top: 1.37in;
+            width: 3.67in;
+            height: 1.16in;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .poster-logo img {
+            max-width: 140%;
+            max-height: 140%;
+            object-fit: contain;
+        }
+
+        /* --- ROW 1 — 3-column grid, top 60% of canvas --- */
+        .poster-body {
+            position: absolute;
+            top: 3.91in;
+            left: 0;
+            right: 0;
+            height: calc(8.50in + 100px);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            padding: 0 0.75in;
+        }
+
+        /* --- ROW 2 — QR flow, full width --- */
+        .poster-row-qr {
+            position: absolute;
+            top: calc(12.81in + 120px);
+            left: 0;
+            right: 0;
+            height: 3.50in;
+            padding: 0.15in 0.75in 0;
+        }
+
+        .poster-row-qr .flow-diagram {
+            margin: 0.10in 0 0;
+        }
+
+        .poster-row-qr .flow-diagram svg {
+            width: 100%;
+            height: auto;
+            max-height: 2.60in;
+        }
+
+        /* --- ROW 3 — Product Sample, full width --- */
+        .poster-row-2 {
+            position: absolute;
+            top: calc(12.81in + 120px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.04in 0.75in 0;
+            overflow: hidden;
+        }
+
+        .poster-row-2 .product-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.40in;
+            margin: 59px 0 0;
+        }
+
+        .poster-row-2 .product-layout .flow-diagram {
+            margin: 0;
+        }
+
+        .poster-row-2 .product-layout .flow-diagram svg {
+            height: auto;
+            display: block;
+        }
+
+        .poster-row-2 .product-layout .figure-single {
+            flex: 0 0 auto;
+        }
+
+        .poster-row-2 .product-layout .figure-single svg {
+            height: 7.8in;
+            width: auto;
+        }
+
+        .poster-row-2 .product-layout .figure-spread {
+            flex: 1 1 auto;
+        }
+
+        .poster-row-2 .product-layout .figure-spread svg {
+            height: 7.8in;
+            width: auto;
+        }
+
+        .poster-row-2 .flow-diagram {
+            margin: 0.10in auto 0;
+        }
+
+        .poster-row-2 .flow-diagram svg {
+            width: auto;
+            max-height: 9.025in;
+            display: block;
+            margin: 0;
+        }
+
+        /* --- COLUMNS --- */
+        .poster-col {
+            padding: 0 0.75in;
+        }
+
+        .poster-col:first-child {
+            padding-left: 0;
+        }
+
+        .poster-col:last-child {
+            padding-right: 0;
+        }
+
+        /* --- COLUMN 1 TEXT SIZE OVERRIDE --- */
+        .poster-col:first-child .poster-section-heading {
+            font-size: 38px;
+        }
+
+        .poster-col:first-child .poster-subheading {
+            font-size: 26px;
+        }
+
+        .poster-col:first-child .poster-section p {
+            font-size: 24px;
+        }
+
+        .poster-col:first-child .styled-table {
+            font-size: 17px;
+        }
+
+        .poster-col:first-child .styled-table thead th {
+            font-size: 17px;
+        }
+
+        .poster-col:nth-child(2) .styled-table {
+            border-top: none;
+        }
+
+        .poster-col:nth-child(2) .styled-table tbody td {
+            padding-top: 28.5px;
+            padding-bottom: 28.5px;
+        }
+
+        /* --- COLUMN 3 CARD LAYOUT --- */
+        .poster-col:last-child .card-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .poster-col:last-child .card {
+            min-height: 1.20in;
+            padding: 11px 13px 2px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+        }
+
+        .poster-col:last-child .card .card-title {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .poster-col:last-child .card p {
+            font-size: 18px;
+        }
+
+        .card-highlight {
+            grid-column: 1 / -1;
+            background: var(--bg-hero);
+            border-color: var(--bg-hero);
+        }
+
+        .card-highlight .card-title {
+            color: var(--color-inverse-text);
+        }
+
+        .poster-section .card-highlight p {
+            color: var(--color-inverse-text);
+        }
+
+        /* --- QR HEADING SPACING --- */
+        .poster-col:last-child .poster-section:last-child .poster-subheading {
+            margin-bottom: 0.01in;
+        }
+
+        /* --- CONNECTED RED LINE: Col 2 heading extends across Col 3 --- */
+        .poster-col:nth-child(2) .poster-section-heading:first-of-type {
+            margin-right: -11.9in;
+            padding-right: 11.9in;
+        }
+
+        /* --- SECTION HEADINGS --- */
+        .poster-section-heading {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-h2);
+            margin: 0 0 0.40in 0;
+            padding-bottom: 0.10in;
+            border-bottom: 3px solid var(--color-h2);
+        }
+
+        /* --- SECTION BODY TEXT --- */
+        .poster-section p {
+            font-family: var(--font-body);
+            font-size: 22px;
+            line-height: 1.5;
+            color: var(--color-body);
+            margin: 0 0 0.25in 0;
+            text-indent: 0;
+        }
+
+        .poster-section ul {
+            font-family: var(--font-body);
+            font-size: 22px;
+            line-height: 1.5;
+            color: var(--color-body);
+            margin: 0 0 0.25in 0;
+            padding-left: 0.40in;
+        }
+
+        .poster-section li {
+            margin-bottom: 0.15in;
+        }
+
+        /* --- SUBHEADINGS --- */
+        .poster-subheading {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-h1);
+            margin: 0.30in 0 0.15in 0;
+            text-align: left;
+        }
+
+        .poster-subheading:first-of-type {
+            margin-top: 0;
+        }
+
+        /* --- STAT ROW --- */
+        .stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.20in;
+            margin: 0.25in 0;
+        }
+
+        .poster-stat {
+            background: var(--bg-surface);
+            border: 2px solid var(--divider-color);
+            border-radius: 8px;
+            padding: 0.15in 0.20in;
+            text-align: center;
+        }
+
+        .poster-stat-number {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-h2);
+            line-height: 1.1;
+        }
+
+        .poster-stat-label {
+            font-family: var(--font-body);
+            font-size: 16px;
+            color: var(--color-body);
+            margin-top: 4px;
+        }
+
+        /* --- FLOW DIAGRAM --- */
+        .flow-diagram {
+            margin: 0.25in 0;
+        }
+
+        .flow-diagram svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .poster-col:nth-child(2) .study-layout {
+            display: grid;
+            grid-template-columns: 2.3fr 2fr;
+            gap: 0.30in;
+        }
+
+        .poster-col:nth-child(2) .flow-diagram svg {
+            width: 100%;
+            margin: 0;
+        }
+
+        /* --- CYCLE DIAGRAM --- */
+        .cycle-diagram {
+            margin: 0.25in 0;
+        }
+
+        .cycle-diagram svg {
+            width: 100%;
+            height: auto;
+        }
+
+        /* --- CALLOUT STAT --- */
+        .callout-stat {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 26px;
+            color: var(--color-h2);
+        }
+
+        /* --- DIAGRAM / FIGURE PLACEHOLDER --- */
+        .poster-figure {
+            width: 100%;
+            aspect-ratio: 10.12 / 6.52;
+            border: 2px solid var(--divider-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--divider-color);
+            font-family: var(--font-body);
+            font-size: 22px;
+            margin-top: 0.40in;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster" style="position:relative;">
+
+        <!-- HEADER BANNER -->
+        <header class="poster-header">
+            <!-- Crescent moon and twinkle stars -->
+            <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+                <!-- Crescent moon — top left -->
+                <circle cx="1.8in" cy="2.0in" r="0.45in" fill="rgba(255,255,255,0.45)"/>
+                <circle cx="1.95in" cy="1.85in" r="0.40in" fill="var(--bg-hero)"/>
+
+                <!-- Twinkle stars — 4-point star shape -->
+                <!-- Star 1 -->
+                <path d="M 100,60 L 103,68 L 111,71 L 103,74 L 100,82 L 97,74 L 89,71 L 97,68 Z" fill="rgba(255,255,255,0.6)"/>
+                <!-- Star 2 -->
+                <path d="M 280,48 L 282,53 L 287,55 L 282,57 L 280,62 L 278,57 L 273,55 L 278,53 Z" fill="rgba(255,255,255,0.45)"/>
+                <!-- Star 3 -->
+                <path d="M 440,75 L 442,80 L 447,82 L 442,84 L 440,89 L 438,84 L 433,82 L 438,80 Z" fill="rgba(255,255,255,0.5)"/>
+                <!-- Star 4 — small -->
+                <path d="M 175,90 L 176.5,94 L 180.5,95.5 L 176.5,97 L 175,101 L 173.5,97 L 169.5,95.5 L 173.5,94 Z" fill="rgba(255,255,255,0.4)"/>
+                <!-- Star 5 -->
+                <path d="M 360,38 L 361.5,42 L 365.5,43.5 L 361.5,45 L 360,49 L 358.5,45 L 354.5,43.5 L 358.5,42 Z" fill="rgba(255,255,255,0.55)"/>
+                <!-- Star 6 — far right -->
+                <path d="M 570,65 L 572,70 L 577,72 L 572,74 L 570,79 L 568,74 L 563,72 L 568,70 Z" fill="rgba(255,255,255,0.4)"/>
+                <!-- Star 7 — tiny -->
+                <path d="M 220,70 L 221,73 L 224,74 L 221,75 L 220,78 L 219,75 L 216,74 L 219,73 Z" fill="rgba(255,255,255,0.35)"/>
+            </svg>
+
+            <div class="poster-header-content">
+                <h1 class="poster-title">Autism Moon: A 52-Week Journey</h1>
+                <div class="poster-author">Sean Mapoles, M.A.</div>
+                <div class="poster-affiliation">Arizona Leadership Education in Neurodevelopmental and Related Disabilities</div>
+            </div>
+            <div class="poster-logo">
+                <img src="../graphics/azlend_logo.png" alt="Arizona LEND">
+            </div>
+        </header>
+
+        <!-- 3-COLUMN BODY -->
+        <div class="poster-body">
+
+            <!-- COLUMN 1: Introduction -->
+            <div class="poster-col">
+                <section class="poster-section">
+                    <h2 class="poster-section-heading">Introduction</h2>
+
+                    <h3 class="poster-subheading">Problem</h3>
+                    <p>Autism spectrum disorder diagnosis is followed by a period of family adjustment where identity, relationships, and imagined futures are reconciled. Despite evidence that cognitive reappraisal, social support, and shared meaning-making facilitate reconciliation, no resources are provided to families to scaffold this process over time, contributing to family member isolation, identity disruption, and dysregulated adjustment.</p>
+
+                    <h3 class="poster-subheading">Purpose</h3>
+                    <p><em>Autism Moon: A 52-Week Journey</em> is a community-sourced bibliotherapy intervention for families following a child's autism diagnosis. The book provides 52 weeks of content contributed by members of the autism community, designed to strengthen family cohesion, resilience, and communication.</p>
+
+                    <h3 class="poster-subheading">Grant Application</h3>
+                    <table class="styled-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Funding Program</strong></td>
+                                <td>APF Direct Action Visionary Grant</td>
+                                <td><strong>Maximum Award</strong></td>
+                                <td>Up to $60,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sponsor</strong></td>
+                                <td>American Psychological Foundation</td>
+                                <td><strong>LOI Deadline</strong></td>
+                                <td>April 30, 2026 (rolling quarterly)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Institution</strong></td>
+                                <td>University of Arizona</td>
+                                <td><strong>Full Proposal</strong></td>
+                                <td>By invitation; evaluated after September 8, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <!-- COLUMN 2: Methods + Literature Review -->
+            <div class="poster-col">
+                <section class="poster-section">
+                    <h2 class="poster-section-heading">The Study</h2>
+                    <div class="study-layout" style="margin-top:0px;">
+                    <div>
+                    <h3 class="poster-subheading">Study Overview</h3>
+                        <table class="styled-table">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Intervention</strong></td>
+                                    <td>52-week bibliotherapy guide: art, poetry, psychoeducation, emotion</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Contributors</strong></td>
+                                    <td>Paid contribution ($300) recruited through the nationwide LEND network</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Accessibility</strong></td>
+                                    <td>Braille strip included on print edition; accessible audio on digital edition</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Design</strong></td>
+                                    <td>Single-group longitudinal, repeated measures across 5 time points</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sample</strong></td>
+                                    <td>N = 80 parents/caregivers; child ASD diagnosis within 24 months</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Instruments</strong></td>
+                                    <td>BFRS (16 items) + FRS6 (6 items); 22 items, ~5 min administration</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time Points</strong></td>
+                                    <td>Pre (Week 1), Post (Week 52), Year 3, Year 5, Year 10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div style="margin-left: 40px;">
+                    
+                    <h3 class="poster-subheading">Study Design</h3>
+                    
+                    <!-- Study design flow — vertical stack -->
+                    <div class="flow-diagram">
+                        <svg viewBox="0 0 720 1536" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Step 1 — Navy fill -->
+                            <rect x="20" y="4" width="510" height="187" rx="6" fill="var(--bg-hero)" />
+                            <text x="275" y="82" text-anchor="middle" fill="var(--color-inverse-text)" font-family="var(--font-heading)" font-size="28" font-weight="700">Recruitment</text>
+                            <text x="275" y="122" text-anchor="middle" fill="var(--color-inverse-text)" font-family="var(--font-body)" font-size="25" opacity="0.85">N = 80 families | Clinic Partners</text>
+                            <path d="M275 191 L275 239" stroke="var(--divider-color)" stroke-width="2" fill="none" marker-end="url(#arrowV)" />
+
+                            <!-- Step 2 — White with navy border -->
+                            <rect x="20" y="249" width="510" height="187" rx="6" fill="var(--bg-surface)" stroke="var(--bg-hero)" stroke-width="2" />
+                            <text x="275" y="327" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-heading)" font-size="28" font-weight="700">Pre-Assessment (Week 1)</text>
+                            <text x="275" y="367" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-body)" font-size="25" opacity="0.85">BFRS + FRS6 via QR code</text>
+                            <text x="275" y="407" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-body)" font-size="25" opacity="0.85">22 items, ~5 min</text>
+                            <path d="M275 436 L275 484" stroke="var(--divider-color)" stroke-width="2" fill="none" marker-end="url(#arrowV)" />
+
+                            <!-- Step 3 — White with navy border -->
+                            <rect x="20" y="494" width="510" height="187" rx="6" fill="var(--bg-surface)" stroke="var(--bg-hero)" stroke-width="2" />
+                            <text x="275" y="572" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-heading)" font-size="28" font-weight="700">Intervention (Weeks 1–52)</text>
+                            <text x="275" y="612" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-body)" font-size="25" opacity="0.85">Art, poetry, psychoeducation, emotion</text>
+                            <path d="M275 681 L275 729" stroke="var(--divider-color)" stroke-width="2" fill="none" marker-end="url(#arrowV)" />
+
+                            <!-- Step 4 — White with navy border -->
+                            <rect x="20" y="739" width="510" height="187" rx="6" fill="var(--bg-surface)" stroke="var(--bg-hero)" stroke-width="2" />
+                            <text x="275" y="817" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-heading)" font-size="28" font-weight="700">Post-Assessment (Week 52)</text>
+                            <text x="275" y="857" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-body)" font-size="25" opacity="0.85">BFRS + FRS6 via QR code</text>
+                            <path d="M275 926 L275 974" stroke="var(--divider-color)" stroke-width="2" fill="none" marker-end="url(#arrowV)" />
+
+                            <!-- Step 5 — White with navy border -->
+                            <rect x="20" y="984" width="510" height="187" rx="6" fill="var(--bg-surface)" stroke="var(--bg-hero)" stroke-width="2" />
+                            <text x="275" y="1062" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-heading)" font-size="28" font-weight="700">Extended Follow-Up</text>
+                            <text x="275" y="1102" text-anchor="middle" fill="var(--color-h1)" font-family="var(--font-body)" font-size="25" opacity="0.85">Year 3, Year 5, Year 10 via QR code</text>
+                            <path d="M275 1171 L275 1219" stroke="var(--divider-color)" stroke-width="2" fill="none" marker-end="url(#arrowV)" />
+
+                            <!-- Step 6 — Navy fill -->
+                            <rect x="20" y="1229" width="510" height="251" rx="6" fill="var(--bg-hero)" />
+                            <text x="275" y="1305" text-anchor="middle" fill="var(--color-inverse-text)" font-family="var(--font-heading)" font-size="28" font-weight="700">Organic Enrollment</text>
+                            <text x="275" y="1365" text-anchor="middle" fill="var(--color-inverse-text)" font-family="var(--font-body)" font-size="25" opacity="0.85">QR codes auto-generate;</text>
+                            <text x="275" y="1405" text-anchor="middle" fill="var(--color-inverse-text)" font-family="var(--font-body)" font-size="25" opacity="0.85">every reader = potential participant</text>
+
+                            <defs>
+                                <marker id="arrowV" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="var(--divider-color)" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                    <!-- Autism infinity symbol -->
+                    <div style="text-align:center; margin-top:450px; transform:translate(72px, -130px);">
+                        <svg viewBox="-5 -10 140 500" xmlns="http://www.w3.org/2000/svg" style="width:3.8in; height:auto; opacity:0.15;">
+                            <path d="m49.988 16.668c-1.1484 0.003906-2.0859 0.93359-2.082 2.082l0.011719 8.332c0.003906 1.1484 0.9375 2.0859 2.0859 2.082 1.1484-0.003906 2.082-0.9375 2.0781-2.0859l-0.011719-8.332c-0.003906-1.1484-0.93359-2.082-2.082-2.0781zm-12.594 2.7773c-0.40234 0.019532-0.79688 0.15625-1.1445 0.41406-0.92188 0.6875-1.1094 1.9922-0.41797 2.9141l4.168 5.5586c0.69141 0.91797 1.9961 1.1055 2.918 0.41406 0.92188-0.6875 1.1094-1.9961 0.41797-2.918l-4.168-5.5547c-0.42969-0.57422-1.1055-0.86328-1.7734-0.83203zm25.008 0c-0.60156 0.027344-1.1836 0.3125-1.5703 0.83203l-4.168 5.5547c-0.69141 0.91797-0.5 2.2305 0.41797 2.918 0.92188 0.6875 2.2266 0.50391 2.918-0.41406l4.168-5.5586c0.69141-0.91797 0.5-2.2227-0.41797-2.9141-0.40234-0.30078-0.87891-0.4375-1.3477-0.41406zm-38.773 11.805c-9.5234-0.003906-17.355 8.3438-17.359 18.73-0.003906 10.387 7.8242 18.738 17.352 18.742 3.5195 0 7.7227-1.3984 11.914-3.4805 5.3164-2.6367 10.641-6.3398 14.457-9.2305 3.8164 2.8906 9.1367 6.5938 14.453 9.2383 4.1914 2.082 8.3945 3.4844 11.914 3.4883 9.5234 0.003907 17.355-8.3398 17.359-18.727s-7.8203-18.738-17.348-18.742c-3.5195-0.003906-7.7227 1.3984-11.918 3.4805-5.3164 2.6367-10.641 6.3359-14.457 9.2305-3.8164-2.8945-9.1328-6.5977-14.449-9.2422-4.1914-2.082-8.3945-3.4844-11.918-3.4883zm0 4.168c2.9805 0.003906 6.5117 1.2891 10.062 3.0508 5.6758 2.8203 11.352 6.9219 15.027 9.7773 0.75391 0.58594 1.8047 0.58594 2.5547 0.003906 3.6758-2.8555 9.3555-6.9531 15.031-9.7695 3.5508-1.7617 7.082-3.0469 10.066-3.043 7.3281 0.003906 13.184 6.5781 13.18 14.57-0.003906 7.9922-5.8633 14.566-13.191 14.562-2.9805-0.003906-6.5117-1.2891-10.062-3.0508-5.6758-2.8203-11.355-6.9219-15.027-9.7773-0.75391-0.58594-1.8047-0.58594-2.5547 0-3.6758 2.8555-9.3555 6.9531-15.031 9.7695-3.5508 1.7617-7.082 3.043-10.062 3.043-7.3281-0.003907-13.188-6.582-13.184-14.574 0.003906-7.9922 5.8633-14.566 13.191-14.562zm1.3945 4.168c-5.7422 0-10.406 4.6602-10.41 10.402 0 5.7422 4.6562 10.402 10.402 10.406 2.7852 0 6.332-1.4023 9.5625-3.1836 4.5039-2.4805 8.3867-5.5859 8.3867-5.5859 0.49609-0.39453 0.78125-0.99609 0.78125-1.6289 0-0.63281-0.28516-1.2344-0.78125-1.6289 0 0-3.8789-3.1094-8.3828-5.5898-3.2305-1.7812-6.7734-3.1875-9.5586-3.1914zm49.953 0c-2.7852 0-6.3281 1.4102-9.5586 3.1914-4.5 2.4844-8.3828 5.5898-8.3828 5.5898-0.49609 0.39453-0.78125 0.99609-0.78125 1.6289 0 0.63281 0.28516 1.2344 0.78125 1.6289 0 0 3.8828 3.1055 8.3867 5.5859 3.2305 1.7812 6.7773 3.1836 9.5625 3.1836 5.7422 0 10.402-4.6641 10.402-10.406 0-5.7422-4.6641-10.402-10.41-10.402zm-49.957 4.168c2.2109 0 4.9844 1.2539 7.5469 2.668 2.1641 1.1953 4.1797 2.5469 5.6172 3.5742-1.4375 1.0234-3.4492 2.3711-5.6172 3.5664-2.5625 1.4141-5.3398 2.6719-7.5508 2.668-3.4453 0-6.2383-2.8008-6.2383-6.2422 0-3.4414 2.7969-6.2344 6.2422-6.2344zm49.961 0c3.4453 0 6.2422 2.793 6.2422 6.2344 0 3.4414-2.793 6.2422-6.2383 6.2422-2.2109 0-4.9883-1.2539-7.5508-2.668-2.168-1.1953-4.1758-2.5391-5.6172-3.5664 1.4375-1.0234 3.4492-2.375 5.6172-3.5742 2.5625-1.4141 5.3359-2.668 7.5469-2.668zm-24.977 27.082c-1.1484-0.003907-2.0859 0.93359-2.0859 2.082l-0.011719 8.332c-0.003906 1.1484 0.93359 2.082 2.082 2.082 1.1484 0.003907 2.082-0.92969 2.082-2.0781l0.011719-8.332c0.003907-1.1484-0.92969-2.0859-2.0781-2.0859zm-8.4336 0.003906c-0.60156 0.027344-1.1836 0.3125-1.5703 0.83203l-4.168 5.5586c-0.69141 0.91797-0.5 2.2227 0.41797 2.9141 0.92188 0.6875 2.2266 0.50391 2.918-0.41406l4.168-5.5547c0.69141-0.91797 0.5-2.2305-0.41797-2.918-0.40234-0.30078-0.87891-0.4375-1.3477-0.41406zm16.66 0c-0.40234 0.019531-0.79688 0.15625-1.1445 0.41406-0.92188 0.6875-1.1094 1.9961-0.41797 2.918l4.168 5.5547c0.69141 0.91797 1.9961 1.1055 2.918 0.41406 0.92188-0.6875 1.1094-1.9922 0.41797-2.9141l-4.168-5.5586c-0.42969-0.57422-1.1055-0.86328-1.7734-0.83203z" fill="var(--color-h1)" fill-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- COLUMN 3: Sustainability -->
+            <div class="poster-col">
+                <section class="poster-section">
+                    <h3 class="poster-subheading" style="margin-top: 90px;">Sustainability</h3>
+
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-title">Digital Access in Perpetuity</div>
+                            <p>Free download hosted on HF Spaces with custom domain. No ongoing grant dependence for distribution.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Donation Return to Funder</div>
+                            <p>All proceeds will be directed toward the APF, where they will be held in an Autism Research Fund. The fund will be available for future translation research.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Print Revenue Funds Hosting</div>
+                            <p>The $1 margin and donations create a self-sustaining loop that outlives the initial grant period.</p>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Research Infrastructure at $0</div>
+                            <p>QR-based data collection via UofA REDCap (HIPAA-compliant, institutionally supported). Statistics via Python. No fees.</p>
+                        </div>
+                        <div class="card card-highlight">
+                            <div class="card-title">10-Year Longitudinal Data</div>
+                            <p>Extended follow-up funded by earmarked incentives ($6,000 total across Years 3, 5, and 10). Produces a dataset unmatched in the autism family intervention literature.</p>
+                        </div>
+                    </div>
+                
+                    <h3 class="poster-subheading" style="margin-bottom: 0px;">Participant QR-to-Survey Experience</h3>
+                    <div class="flow-diagram">
+                        <svg viewBox="0 0 1240 280" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <style>
+                                    .svg-label { font-family: 'Open Sans', sans-serif; font-size: 13px; fill: var(--color-h1); text-anchor: middle; }
+                                    .svg-sublabel { font-family: 'Open Sans', sans-serif; font-size: 11px; fill: var(--divider-color); text-anchor: middle; }
+                                    .svg-step { font-family: 'Open Sans', sans-serif; font-size: 11px; fill: var(--divider-color); text-anchor: middle; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+                                </style>
+                                <marker id="arrowQR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" fill="var(--color-h1)"/>
+                                </marker>
+                            </defs>
+
+                            <!-- Step 1: Book open with QR -->
+                            <rect x="20" y="50" width="150" height="180" rx="6" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                            <line x1="95" y1="50" x2="95" y2="230" stroke="var(--color-h1)" stroke-width="1.5" stroke-dasharray="4,3"/>
+                            <line x1="35" y1="80" x2="82" y2="80" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="35" y1="95" x2="82" y2="95" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="35" y1="110" x2="75" y2="110" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="35" y1="135" x2="82" y2="135" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="35" y1="150" x2="82" y2="150" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="35" y1="165" x2="70" y2="165" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <image x="108" y="73" width="49" height="49" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAIAAADbpWgoAAAENElEQVR4nO2cQY4bOwxEM4Fvkw8kuf8hkkXuM38RQF6wU2AV6Wov6q0GbbUkFyiOSFH++Pz8/DLg54///v7x6/effuNDfau2AY2piYEnnSGobwr4Onk5CERxN4/zF1jOFeANOh/VsSiHA/qpgIlR3wL03OF0GBt3E8XdPOqjzv9rAGgDnEl1FEMv15kh5Z200WvPsXE3UdzNhVfRoFaotkno+CsQ73TmM3QvHWLjbqK4mzWvQq3HYeRyADsc6q3h9owiNu4miru58Crr4QAVcVBJmE6qBLy1tY2hFIuNu4nibp5eZXi0sRV6vO0TMHmK2LibKO7msbXD3zoRrm9RcQrlysBYgKFisXE3UdwNOgPSljNIcQzPbUEIQ0VJ2j6k43k6lTCxcTdR3M0HqILTTnMA1HrsrNCO6wAMNz9UEd0hNu4mirtpRUDD/IO29rUcb0Xbz1DToNSIjbuJ4m64vcqw1r2yVedfG1M9O4tsY+Nuorgb5FU6GMrGDpRPWz/6GW5azpPYuJso7ubpVdb9wzC9uTVEbXzQEiNawX+ytbcRxd18/Pj+7V+faRuAyvoGoIO25IcxUcdNxcbdRHE3T6+yfg2Z2qvUnkFjLeGzFe8MvVxs3E0Ud/OsV6EK2odrTatVA6N3PjoMvSU1VvIq9xPF3VxU7G+lQV53d6+zkRgW0lDXkQ6pgntHorgbVFtb0SppQT9g0OEVwoq2w6FivQ6xcTdR3M1FXoUqWtNOeyvaWJoD3DoMAq9Xsle5jSjuBp0sb3mMToednoc1eFouaBi+5QzofqK4mwuvonmMg7YTGLZ53RBbjQ+xcTdR3A26BzSMCyrDsIJKjNybKwbExt1EcTcX2drDMMypTzpuapg80fzeesE/IDbuJoq7aVXsa/+UhznVOjrVc2eIYc/1LUCytbcRxd08qEWn1aketMLXWwr+1xPUh9i4myju5qHt8LXi2NcVxmuex1CaW4mNu4nibrgI6PC6A6POEFrjrXOiTs+VREC3EcXdiL+GTe1ethIaVGjWmQZgWNwC2sTG3URxNxf3gA5aNX7tcMuZUB91JmYgeZX7ieJuLvIqHbT8A5WtHZ4Ra7nZzoWgzljge8XG3URxN9zvq2inHltRSeetrSQM1Th5lbcmirvhKva3qtYrw7yKdhVxeMMIzLASr3IbUdwN+oVJivUas9cVpB3WPUZOlt+RKO5m/zf2tYI0LUehZWsBWhkw5Z1i426iuJvnGdDwv3zntFcLYSio81+AFvR1vkVs3E0Ud/Ooj4ZpyU5VCUCre9GuKmtVNxpniNi4myju5sKraGjhgNbP+trXbjxpr8fG3URxN2teZXjCMkzt1rfAxDoz1GK01Na+I1HczYVX0VKgw4uHYPStI+/hrqPTc6WOFRt3E8XdoIr9LbaStMN6FaofSg0qRRwbdxPF3fwPPG6VmFApvZMAAAAASUVORK5CYII="/>
+                            <line x1="108" y1="135" x2="155" y2="135" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="108" y1="150" x2="155" y2="150" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <line x1="108" y1="165" x2="145" y2="165" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <rect x="20" y="210" width="150" height="20" rx="0" fill="var(--divider-color)" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="50" cy="216" r="2" fill="var(--color-h1)"/><circle cx="56" cy="216" r="2" fill="var(--color-h1)"/><circle cx="50" cy="222" r="2" fill="var(--color-h1)"/>
+                            <circle cx="66" cy="216" r="2" fill="var(--color-h1)"/><circle cx="66" cy="222" r="2" fill="var(--color-h1)"/><circle cx="72" cy="222" r="2" fill="var(--color-h1)"/>
+                            <circle cx="82" cy="216" r="2" fill="var(--color-h1)"/><circle cx="88" cy="216" r="2" fill="var(--color-h1)"/><circle cx="82" cy="222" r="2" fill="var(--color-h1)"/><circle cx="88" cy="222" r="2" fill="var(--color-h1)"/>
+                            <circle cx="98" cy="216" r="2" fill="var(--color-h1)"/><circle cx="104" cy="222" r="2" fill="var(--color-h1)"/>
+                            <circle cx="114" cy="216" r="2" fill="var(--color-h1)"/><circle cx="120" cy="216" r="2" fill="var(--color-h1)"/><circle cx="114" cy="222" r="2" fill="var(--color-h1)"/>
+                            <circle cx="130" cy="216" r="2" fill="var(--color-h1)"/><circle cx="136" cy="222" r="2" fill="var(--color-h1)"/><circle cx="136" cy="216" r="2" fill="var(--color-h1)"/>
+                            <text class="svg-step" x="95" y="42">1. Open Book</text>
+                            <text class="svg-sublabel" x="95" y="258">Week 1 or Week 52</text>
+
+                            <line x1="185" y1="140" x2="215" y2="140" stroke="var(--color-h1)" stroke-width="2" marker-end="url(#arrowQR)"/>
+
+                            <!-- Step 2: Phone scanning -->
+                            <rect x="230" y="60" width="90" height="160" rx="12" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                            <rect x="238" y="78" width="74" height="120" rx="2" fill="var(--bg-page)" stroke="var(--divider-color)" stroke-width="1"/>
+                            <circle cx="275" cy="120" r="20" fill="none" stroke="var(--color-h1)" stroke-width="1.5"/>
+                            <circle cx="275" cy="120" r="8" fill="none" stroke="var(--color-h1)" stroke-width="1.5"/>
+                            <rect x="250" y="145" width="10" height="10" rx="1" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <rect x="290" y="145" width="10" height="10" rx="1" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <rect x="250" y="165" width="10" height="10" rx="1" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <rect x="290" y="165" width="10" height="10" rx="1" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <circle cx="275" cy="210" r="5" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <text class="svg-step" x="275" y="42">2. Scan QR</text>
+                            <text class="svg-sublabel" x="275" y="258">GUID auto-populated</text>
+
+                            <line x1="335" y1="140" x2="365" y2="140" stroke="var(--color-h1)" stroke-width="2" marker-end="url(#arrowQR)"/>
+
+                            <!-- Step 3: Survey on phone -->
+                            <rect x="380" y="60" width="90" height="160" rx="12" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                            <rect x="388" y="78" width="74" height="120" rx="2" fill="var(--bg-page)" stroke="var(--divider-color)" stroke-width="1"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-h1);" x="395" y="95">Family Survey</text>
+                            <line x1="395" y1="100" x2="452" y2="100" stroke="var(--color-h1)" stroke-width="0.5"/>
+                            <circle cx="400" cy="112" r="4" fill="none" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="415" cy="112" r="4" fill="var(--color-h1)" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="430" cy="112" r="4" fill="none" stroke="var(--color-h1)" stroke-width="1"/>
+                            <line x1="395" y1="122" x2="452" y2="122" stroke="var(--divider-color)" stroke-width="0.5"/>
+                            <circle cx="400" cy="134" r="4" fill="none" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="415" cy="134" r="4" fill="none" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="430" cy="134" r="4" fill="var(--color-h1)" stroke="var(--color-h1)" stroke-width="1"/>
+                            <line x1="395" y1="144" x2="452" y2="144" stroke="var(--divider-color)" stroke-width="0.5"/>
+                            <circle cx="400" cy="156" r="4" fill="var(--color-h1)" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="415" cy="156" r="4" fill="none" stroke="var(--color-h1)" stroke-width="1"/>
+                            <circle cx="430" cy="156" r="4" fill="none" stroke="var(--color-h1)" stroke-width="1"/>
+                            <rect x="400" y="170" width="50" height="16" rx="3" fill="var(--color-h1)"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:8px; fill:var(--color-inverse-text); text-anchor:middle;" x="425" y="181">Submit</text>
+                            <circle cx="425" cy="210" r="5" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <text class="svg-step" x="425" y="42">3. Complete Survey</text>
+                            <text class="svg-sublabel" x="425" y="258">22 items · 5 minutes</text>
+
+                            <line x1="485" y1="140" x2="515" y2="140" stroke="var(--color-h1)" stroke-width="2" marker-end="url(#arrowQR)"/>
+
+                            <!-- Step 4: Confirmation -->
+                            <rect x="530" y="60" width="90" height="160" rx="12" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                            <rect x="538" y="78" width="74" height="120" rx="2" fill="var(--bg-page)" stroke="var(--divider-color)" stroke-width="1"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-h1); text-anchor:middle; font-weight:600;" x="575" y="95">Thank you.</text>
+                            <circle cx="575" cy="130" r="22" fill="none" stroke="var(--color-h1)" stroke-width="2"/>
+                            <polyline points="562,130 571,140 590,119" fill="none" stroke="var(--color-h1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:8px; fill:var(--divider-color); text-anchor:middle;" x="575" y="168">Response</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:8px; fill:var(--divider-color); text-anchor:middle;" x="575" y="180">Recorded.</text>
+                            <circle cx="575" cy="210" r="5" fill="none" stroke="var(--divider-color)" stroke-width="1"/>
+                            <text class="svg-step" x="575" y="42">4. Confirmation</text>
+                            <text class="svg-sublabel" x="575" y="258">No PII collected</text>
+
+                            <line x1="635" y1="140" x2="665" y2="140" stroke="var(--color-h1)" stroke-width="2" marker-end="url(#arrowQR)"/>
+
+                            <!-- Step 5: REDCap -->
+                            <rect x="680" y="60" width="260" height="160" rx="6" fill="var(--bg-hero)" stroke="var(--bg-hero)" stroke-width="2"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:11px; fill:var(--color-inverse-text); font-weight:700; text-anchor:middle;" x="810" y="90">REDCap (UofA CB2)</text>
+                            <line x1="700" y1="100" x2="920" y2="100" stroke="var(--divider-color)" stroke-width="0.5"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="700" y="120">AM-0042</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="780" y="120">pre</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="830" y="120">2, 1, 2, 0, 1...</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="700" y="138">AM-0017</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="780" y="138">post</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="830" y="138">1, 2, 2, 1, 2...</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="700" y="156">AM-0063</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="780" y="156">pre</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:10px; fill:var(--divider-color);" x="830" y="156">0, 1, 1, 2, 1...</text>
+                            <line x1="700" y1="168" x2="920" y2="168" stroke="var(--divider-color)" stroke-width="0.5"/>
+                            <rect x="802" y="186" width="16" height="12" rx="2" fill="none" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <path d="M805,186 V181 A5,5 0 0,1 815,181 V186" fill="none" stroke="var(--divider-color)" stroke-width="1.5"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:7px; fill:var(--divider-color); text-anchor:middle;" x="810" y="214">HIPAA-Compliant</text>
+                            <text class="svg-step" x="810" y="42">5. Data Stored</text>
+                            <text class="svg-sublabel" x="810" y="258">De-identified · Audit trail · Researcher access only</text>
+
+                            <line x1="945" y1="140" x2="975" y2="140" stroke="var(--color-h1)" stroke-width="2" marker-end="url(#arrowQR)"/>
+
+                            <!-- Step 6: Researcher Dashboard -->
+                            <rect x="990" y="60" width="210" height="160" rx="6" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                            <rect x="990" y="60" width="210" height="24" rx="6" fill="var(--bg-hero)"/>
+                            <rect x="990" y="74" width="210" height="10" fill="var(--bg-hero)"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text); font-weight:700; text-anchor:middle;" x="1095" y="76">Researcher Dashboard</text>
+                            <rect x="1010" y="150" width="16" height="50" rx="1" fill="var(--color-h1)" opacity="0.2"/>
+                            <rect x="1032" y="130" width="16" height="70" rx="1" fill="var(--color-h1)" opacity="0.35"/>
+                            <rect x="1054" y="110" width="16" height="90" rx="1" fill="var(--color-h1)" opacity="0.5"/>
+                            <rect x="1076" y="120" width="16" height="80" rx="1" fill="var(--color-h1)" opacity="0.65"/>
+                            <rect x="1098" y="100" width="16" height="100" rx="1" fill="var(--color-h1)" opacity="0.8"/>
+                            <line x1="1005" y1="205" x2="1120" y2="205" stroke="var(--divider-color)" stroke-width="1"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:6px; fill:var(--divider-color); text-anchor:middle;" x="1018" y="213">Pre</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:6px; fill:var(--divider-color); text-anchor:middle;" x="1040" y="213">Post</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:6px; fill:var(--divider-color); text-anchor:middle;" x="1062" y="213">Yr3</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:6px; fill:var(--divider-color); text-anchor:middle;" x="1084" y="213">Yr5</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:6px; fill:var(--divider-color); text-anchor:middle;" x="1106" y="213">Yr10</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:8px; fill:var(--color-h1); font-weight:600;" x="1135" y="100">N = 42</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:7px; fill:var(--divider-color);" x="1135" y="112">Enrolled</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:8px; fill:var(--color-h1); font-weight:600;" x="1135" y="128">87%</text>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:7px; fill:var(--divider-color);" x="1135" y="140">Completion</text>
+                            <rect x="1140" y="152" width="48" height="48" rx="2" fill="var(--bg-surface)" stroke="var(--divider-color)" stroke-width="0.5"/>
+                            <image x="1142" y="154" width="44" height="44" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAIAAAAkfEPpAAAC8UlEQVR4nO2dQU7DQAwAAfU5HOD/j4AD/ykHLkHCki3bmVTM3CjJphpZruU4m+f7/f4k5/JCf4H/iNIBlA5wO/7x/vY6foGPz68/P89c63hudHy0fnStaM3MtToc1zfSAZQOoHSAW/SPTK6MqObr6NxOzo3OrbLhwUgHUDqA0gHCnH6kk6O316zW750afOo7G+kASgdQOkAqp09Rrbsz+TpzbqfW3sBIB1A6gNIBTs3pGar97sznV8NIB1A6gNIBUjl9Kj927kNW83Wnxo+Y8mCkAygdQOkAYU7fmP3o3POs1uNTcywbHox0AKUDKB3gmZpP7/RPpuZqqP6MkQ6gdAClA/zK6VMz4BFTtXNnJr1Dx88RIx1A6QBKByjPp1f7Hplzq73vzPFTdXqnLx+tb6QDKB1A6QCp3stU85adGZXtfsvGDH6EkQ6gdAClA4Q5fWqOsJNPt2vtiM792wxGOoDSAZQOUK7Tq3TyePX3oPMs69TeMpn1jXQApQMoHWDlmaOpXvmj5OjomAgjHUDpAEoHCPdlrN7/jNapsj1f2OnpT/1OGOkASgdQOkB5lnHqXmWGjTq6SqdHZO/lQigdQOkAY3MvnX3JN+bWt58tsk5/MJQOoHSAVJ1+ZGpP3TPnDq92vJEOoHQApQOU9/CieuUbezF2euid3x4jHUDpAEoHCOv0qby5MY84NQtP7dFopAMoHUDpAK1Zxo0exXY/feO9o/ZeHgClAygd4NR9GTdq4anafOM9eRFGOoDSAZQOEM6nT1Hd37yTW6dq86leUISRDqB0AKUDlPdlzLCRN49szyxW750eyXwfIx1A6QBKB0j106dmHLd7Ix023qXnM0cXQukASgdY2e+lysb+jp05xern1d8DIx1A6QBKB7hETp/aZyZas7pOpl+fwd7LhVA6gNIBys8cdejcw+z0djpMPV9q7wVG6QBKBwhz+sYMTGb9jfdmREw9d+q76x4ApQMoHeDU+XT5wUgHUDqA0gG+AWHnKzIgnP/CAAAAAElFTkSuQmCC"/>
+                            <text style="font-family:'Open Sans',sans-serif; font-size:6px; fill:var(--divider-color); text-anchor:middle;" x="1164" y="210">Live Preview</text>
+                            <text class="svg-step" x="1095" y="42">6. Dashboard</text>
+                            <text class="svg-sublabel" x="1095" y="258">Live · Researcher access only</text>
+                        </svg>
+                    </div>
+                </section>
+                    <div class="half-spacer"></div>
+                    <div class="half-spacer"></div>
+                <section class="poster-section" style="margin-top:40px;">
+                    <h2 class="poster-section-heading">Sign Up as a Book Contributor</h2>
+                    <div style="display:flex; align-items:flex-start; gap:0.30in;">
+                        <div style="flex:1;">
+                            <p>This book is built by its community. If you are an autistic adult, a parent, or a professional who works with families after diagnosis, we invite you to contribute a week of content: your art, your words, your perspective. Contributors receive $300.</p>
+                            <p>Scan the QR code to express interest.</p>
+                        </div>
+                        <div style="flex:0 0 auto; text-align:center; max-width:2.2in;">
+                            <img src="../graphics/qr_contributor.svg" alt="Contributor Sign-Up QR" style="width:1.96in; height:1.96in;"/>
+                        </div>
+                    </div>
+                    <div class="half-spacer"></div>
+                    <h2 class="poster-section-heading">References</h2>
+                    <ul style="font-size:14px; line-height:1.4; padding-left:0; list-style:none;">
+                        <li style="text-indent:-0.30in; padding-left:0.30in; margin-bottom:6px;">Chase, B. (2022). The unexpected comfort of feeling it all: A support group for mothers of autistic adolescents using the lens of ambiguous loss. <em>Clinical Social Work Journal, 50</em>, 436–444.</li>
+                        <li style="text-indent:-0.30in; padding-left:0.30in; margin-bottom:6px;">Chow, K. M., Tang, W. K. S., Chan, W. H. G., Sit, W. H. J., Choi, K. C., &amp; Chan, S. (2024). A 6-item Family Resilience Scale (FRS6) for measuring longitudinal trajectory of family adjustment. <em>Behavioral Sciences, 14</em>(3), 251.</li>
+                        <li style="text-indent:-0.30in; padding-left:0.30in; margin-bottom:6px;">Enav, Y., Erhard-Weiss, D., Kopelman, M., Petsagourakis, D., &amp; Webber, J. (2022). Cognitive reappraisal training for parents of children with autism spectrum disorder. <em>Frontiers in Psychiatry, 13</em>, 995669.</li>
+                        <li style="text-indent:-0.30in; padding-left:0.30in; margin-bottom:6px;">Fok, C. C. T., Allen, J., Henry, D., &amp; Team, P. A. (2014). The Brief Family Relationship Scale. <em>Assessment, 21</em>(1), 67–72.</li>
+                        <li style="text-indent:-0.30in; padding-left:0.30in; margin-bottom:6px;">Hendrix, N. M., Bodine, A., Sheldrick, R. C., &amp; Carter, A. S. (2022). A systematic review of emotion regulation in parent-mediated interventions for autism spectrum disorder. <em>Frontiers in Psychiatry, 13</em>, 846286.</li>
+
+                    </ul>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- ROW 2: Product Sample — full width, bottom -->
+        <div class="poster-row-2">
+            <section class="poster-section">
+                <h2 class="poster-section-heading" style="margin-top:-2px;">Product Sample</h2>
+
+                <div class="product-layout">
+
+                <!-- Figure 1: Single page mockup -->
+                <div class="flow-diagram figure-single">
+                    <svg viewBox="0 0 850 1100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .book-title { font-family: var(--font-heading); font-size: 28px; fill: var(--color-h1); font-weight: 700; text-anchor: middle; }
+                                .book-subtitle { font-family: var(--font-body); font-size: 14px; fill: var(--divider-color); text-anchor: middle; font-style: italic; }
+                                .book-body { font-family: var(--font-body); font-size: 15px; fill: var(--color-h1); }
+                                .book-week { font-family: var(--font-body); font-size: 12px; fill: var(--divider-color); text-anchor: end; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; }
+                                .book-prompt { font-family: var(--font-body); font-size: 14px; fill: var(--color-h1); font-style: italic; }
+                                .book-braille-label { font-family: var(--font-body); font-size: 9px; fill: var(--divider-color); text-anchor: middle; }
+                            </style>
+                        </defs>
+
+                        <!-- Page background -->
+                        <rect x="0" y="0" width="680" height="880" rx="4" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+
+                        <!-- Week label top right -->
+                        <text class="book-week" x="640" y="40">About</text>
+
+                        <!-- Divider under week -->
+                        <line x1="40" y1="52" x2="640" y2="52" stroke="var(--divider-color)" stroke-width="1"/>
+
+                        <!-- Title -->
+                        <text class="book-title" x="340" y="110">Autism Moon</text>
+                        <text class="book-subtitle" x="340" y="134">A 52-Week Journey</text>
+
+                        <!-- Divider -->
+                        <line x1="260" y1="150" x2="420" y2="150" stroke="var(--color-h1)" stroke-width="1"/>
+
+                        <!-- Welcome text -->
+                        <text class="book-body" x="80" y="190">
+                            <tspan x="80" dy="0">This book was written by 52 members of the autism community;</tspan>
+                            <tspan x="80" dy="24">parents, autistic adults, and professionals who understand</tspan>
+                            <tspan x="80" dy="24">what your family is experiencing right now. By completing the</tspan>
+                            <tspan x="80" dy="24">brief survey inside, you help build the research that makes</tspan>
+                            <tspan x="80" dy="24">this resource better for every family who comes after yours.</tspan>
+                        </text>
+
+                        <!-- Centered quote -->
+                        <line x1="280" y1="334" x2="400" y2="334" stroke="var(--divider-color)" stroke-width="1"/>
+                        <text class="book-prompt" x="340" y="369" style="text-anchor:middle;">
+                            <tspan x="340" dy="0">There are no right or wrong answers.</tspan>
+                            <tspan x="340" dy="28">Just your family, right now, as you are.</tspan>
+                        </text>
+                        <line x1="280" y1="432" x2="400" y2="432" stroke="var(--divider-color)" stroke-width="1"/>
+
+                        <!-- Study instructions -->
+                        <text class="book-body" x="80" y="476" style="font-weight:600;">
+                            <tspan x="80" dy="0">How to Participate in the Research Study</tspan>
+                        </text>
+                        <text class="book-body" x="80" y="514">
+                            <tspan x="80" dy="0">1.  Scan the QR code on this page with your phone camera.</tspan>
+                            <tspan x="80" dy="26">2.  Complete the brief questionnaire (22 items, ~5 minutes).</tspan>
+                            <tspan x="80" dy="26">3.  Answer once per household.</tspan>
+                            <tspan x="80" dy="26">4.  You will be asked to complete this survey again at the</tspan>
+                            <tspan x="80" dy="22">     end of the book (Week 52). An email reminder will</tspan>
+                            <tspan x="80" dy="22">     be provided.</tspan>
+                        </text>
+                        <text class="book-body" x="80" y="678">
+                            <tspan x="80" dy="0">Your responses are anonymous. No personal information is</tspan>
+                            <tspan x="80" dy="22">collected. Your unique QR code links only to a participant</tspan>
+                            <tspan x="80" dy="22">number, not your name, email, or any identifying details.</tspan>
+                        </text>
+
+                        <!-- QR code -->
+                        <rect x="510" y="710" width="90" height="90" rx="2" fill="var(--color-h1)"/>
+                        <image x="515" y="715" width="80" height="80" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAIAAADbpWgoAAAENElEQVR4nO2cQY4bOwxEM4Fvkw8kuf8hkkXuM38RQF6wU2AV6Wov6q0GbbUkFyiOSFH++Pz8/DLg54///v7x6/effuNDfau2AY2piYEnnSGobwr4Onk5CERxN4/zF1jOFeANOh/VsSiHA/qpgIlR3wL03OF0GBt3E8XdPOqjzv9rAGgDnEl1FEMv15kh5Z200WvPsXE3UdzNhVfRoFaotkno+CsQ73TmM3QvHWLjbqK4mzWvQq3HYeRyADsc6q3h9owiNu4miru58Crr4QAVcVBJmE6qBLy1tY2hFIuNu4nibp5eZXi0sRV6vO0TMHmK2LibKO7msbXD3zoRrm9RcQrlysBYgKFisXE3UdwNOgPSljNIcQzPbUEIQ0VJ2j6k43k6lTCxcTdR3M0HqILTTnMA1HrsrNCO6wAMNz9UEd0hNu4mirtpRUDD/IO29rUcb0Xbz1DToNSIjbuJ4m64vcqw1r2yVedfG1M9O4tsY+Nuorgb5FU6GMrGDpRPWz/6GW5azpPYuJso7ubpVdb9wzC9uTVEbXzQEiNawX+ytbcRxd18/Pj+7V+faRuAyvoGoIO25IcxUcdNxcbdRHE3T6+yfg2Z2qvUnkFjLeGzFe8MvVxs3E0Ud/OsV6EK2odrTatVA6N3PjoMvSU1VvIq9xPF3VxU7G+lQV53d6+zkRgW0lDXkQ6pgntHorgbVFtb0SppQT9g0OEVwoq2w6FivQ6xcTdR3M1FXoUqWtNOeyvaWJoD3DoMAq9Xsle5jSjuBp0sb3mMToednoc1eFouaBi+5QzofqK4mwuvonmMg7YTGLZ53RBbjQ+xcTdR3A26BzSMCyrDsIJKjNybKwbExt1EcTcX2drDMMypTzpuapg80fzeesE/IDbuJoq7aVXsa/+UhznVOjrVc2eIYc/1LUCytbcRxd08qEWn1aketMLXWwr+1xPUh9i4myju5qHt8LXi2NcVxmuex1CaW4mNu4nibrgI6PC6A6POEFrjrXOiTs+VREC3EcXdiL+GTe1ethIaVGjWmQZgWNwC2sTG3URxNxf3gA5aNX7tcMuZUB91JmYgeZX7ieJuLvIqHbT8A5WtHZ4Ra7nZzoWgzljge8XG3URxN9zvq2inHltRSeetrSQM1Th5lbcmirvhKva3qtYrw7yKdhVxeMMIzLASr3IbUdwN+oVJivUas9cVpB3WPUZOlt+RKO5m/zf2tYI0LUehZWsBWhkw5Z1i426iuJvnGdDwv3zntFcLYSio81+AFvR1vkVs3E0Ud/Ooj4ZpyU5VCUCre9GuKmtVNxpniNi4myju5sKraGjhgNbP+trXbjxpr8fG3URxN2teZXjCMkzt1rfAxDoz1GK01Na+I1HczYVX0VKgw4uHYPStI+/hrqPTc6WOFRt3E8XdoIr9LbaStMN6FaofSg0qRRwbdxPF3fwPPG6VmFApvZMAAAAASUVORK5CYII="/>
+                        <text style="font-family:var(--font-body); font-size:9px; fill:var(--divider-color); text-anchor:middle;" x="555" y="815">Scan to begin survey</text>
+
+                        <!-- Page number -->
+                        <text style="font-family:var(--font-body); font-size:11px; fill:var(--divider-color); text-anchor:middle;" x="340" y="815">1</text>
+
+                        <!-- Braille strip -->
+                        <rect x="0" y="835" width="680" height="45" fill="var(--color-h1)"/>
+                        <circle cx="60" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="68" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="60" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="80" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="88" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="80" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="88" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="100" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="100" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="108" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="120" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="128" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="128" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="140" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="148" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="160" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="168" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="160" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="168" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="180" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="188" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="200" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="208" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="200" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="230" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="238" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="250" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="258" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="250" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="270" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="278" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="278" cy="850" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="290" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="290" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="298" cy="850" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="310" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="318" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="310" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="318" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="330" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="338" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="350" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="350" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="358" cy="850" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="400" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="408" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="400" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="408" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="420" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="428" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="440" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="448" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="440" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="460" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="468" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="468" cy="850" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="480" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="480" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="488" cy="850" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="500" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="508" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="508" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="520" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="528" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="540" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="548" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="540" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="548" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="560" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="568" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="580" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="588" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="580" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="600" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="608" cy="858" r="2.5" fill="var(--color-inverse-text)"/><circle cx="608" cy="850" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="620" cy="850" r="2.5" fill="var(--color-inverse-text)"/><circle cx="620" cy="858" r="2.5" fill="var(--color-inverse-text)"/>
+                        <text class="book-braille-label" x="340" y="874">"There are no right or wrong answers. Just your family, right now, as you are."</text>
+                    </svg>
+                </div>
+
+                <!-- Figure 2: Two-page spread mockup -->
+                <div class="flow-diagram figure-spread">
+                    <svg viewBox="0 0 1200 725" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Left page -->
+                        <rect x="0" y="0" width="475" height="580" rx="4" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                        <!-- Right page -->
+                        <rect x="485" y="0" width="475" height="580" rx="4" fill="var(--bg-surface)" stroke="var(--color-h1)" stroke-width="2"/>
+                        <!-- Spine -->
+                        <line x1="480" y1="0" x2="480" y2="580" stroke="var(--color-h1)" stroke-width="2.5"/>
+
+                        <!-- Brush texture filter -->
+                        <defs>
+                            <filter id="brush-texture" x="-5%" y="-20%" width="110%" height="140%">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.04 0.12" numOctaves="4" seed="7" result="noise"/>
+                                <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+                            </filter>
+                        </defs>
+
+                        <!-- Left page section header -->
+                        <text style="font-family:'Open Sans',sans-serif; font-size:11px; fill:var(--divider-color); font-weight:600; text-transform:uppercase; letter-spacing:1.5px;" x="30" y="36">Week 1</text>
+                        <line x1="30" y1="46" x2="445" y2="46" stroke="var(--divider-color)" stroke-width="1"/>
+                        <text style="font-family:'Open Sans',sans-serif; font-size:22px; fill:var(--color-h1); font-weight:700;" x="30" y="78">The Hidden Object Activity</text>
+
+                        <!-- Paper bag illustration (Noun Project — Aeliz) -->
+                        <g transform="translate(190,240) scale(2.8)" fill="var(--color-h1)" stroke="none">
+                            <path d="m74.727 6.8828c0.95313-1.3711 3.0352-1.1875 3.7344 0.33203l0.11719 0.25391c1.1055-1.3594 3.375-0.59766 3.375 1.2148v62.762c0 0.046876 0.007813 0.097657 0.019531 0.14453l3.8281 15.039c0.34375 1.3555-0.44531 2.7383-1.7852 3.1289l-18.473 5.4141c-0.089844 0.027344-0.1875 0.039063-0.28125 0.039063h-48.527c-1.6367 0-2.8633-1.4961-2.543-3.1016l4.1016-20.508c0.007812-0.035156 0.011719-0.074218 0.011719-0.11328v-60.863c0-2.1992 2.5664-3.4023 4.2578-1.9922l1.3906 1.1602c0.20312 0.16797 0.49219 0.18359 0.71094 0.039062l3.9492-2.6328c1.1172-0.74609 2.625-0.51172 3.4648 0.53906l1.3906 1.7383c0.20312 0.25391 0.57031 0.29688 0.82812 0.10156l3.1875-2.4531c0.88281-0.67969 2.0977-0.71875 3.0234-0.10156l4.0547 2.7031c0.24609 0.16406 0.57422 0.12109 0.77344-0.097656l1.7812-1.9805c0.90625-1.0078 2.4375-1.1484 3.5117-0.32031l3.2266 2.4805c0.20703 0.16016 0.49609 0.16797 0.70703 0.015625l3.8203-2.7305c0.92969-0.66406 2.1875-0.64062 3.0938 0.054688l3.457 2.6602c0.20703 0.16016 0.49609 0.16797 0.71094 0.015625l4.7812-3.418c0.34766-0.25 0.81641-0.24609 1.1641 0.003906l1.8242 1.3086c0.26953 0.19141 0.64453 0.12891 0.83594-0.14453zm1.9141 1.1641c-0.050781-0.10938-0.20312-0.125-0.26953-0.023437l-0.47656 0.6875c-0.82812 1.1914-2.4688 1.4766-3.6484 0.62891l-0.23828-0.17188v62.277c0 0.21484-0.027343 0.42969-0.082031 0.64063l-5.2617 20.676 16.789-4.9219c0.30469-0.089844 0.48828-0.40625 0.40625-0.71875l-3.8281-15.035c-0.050781-0.21094-0.078125-0.42578-0.078125-0.64063v-62.492c-0.89844 0.97266-2.5508 0.75391-3.125-0.50391zm3.3125 0.63672zm-15.469 84.527h-47.75c-0.375 0-0.65625-0.34375-0.58203-0.71094l4.1016-20.504c0.035156-0.16797 0.050782-0.33984 0.050782-0.50781v-60.863c0-0.50391 0.58984-0.77734 0.97656-0.45703l1.3906 1.1602c0.88281 0.73828 2.1445 0.80469 3.1016 0.16797l3.9492-2.6328c0.25391-0.17188 0.60156-0.11719 0.79297 0.125l1.3906 1.7383c0.88281 1.1055 2.4883 1.2969 3.6094 0.4375l3.1875-2.4531c0.20312-0.15625 0.48047-0.16406 0.69531-0.023438l4.0547 2.7031c1.0703 0.71484 2.5078 0.53516 3.3672-0.42188l1.7852-1.9805c0.20703-0.23047 0.55859-0.26562 0.80469-0.074219l3.2266 2.4805c0.90625 0.69922 2.1602 0.71875 3.0898 0.054688l3.8203-2.7266c0.21484-0.15234 0.5-0.14844 0.70703 0.011719l3.4609 2.6602c0.90625 0.69922 2.1602 0.71875 3.0898 0.054688l3.2031-2.2852v62.281c0 0.046876-0.007812 0.097657-0.019531 0.14453z" fill-rule="evenodd"/>
+                            <path d="m76.684 13.547c0.55078 0 1 0.44922 1 1v53.266c0 0.55078-0.44922 1-1 1-0.55469 0-1-0.44922-1-1v-53.266c0-0.55078 0.44531-1 1-1zm-52.594 58.086c0-0.55078 0.44922-1 1-1h40.367c0.55078 0 1 0.44922 1 1 0 0.55469-0.44922 1-1 1h-40.367c-0.55078 0-1-0.44531-1-1zm52.445 3.0742c0.54688-0.082031 1.0547 0.29297 1.1367 0.83984l1.6719 11.227c0.082031 0.54687-0.29688 1.0547-0.84375 1.1367-0.54688 0.082032-1.0547-0.29688-1.1367-0.84375l-1.6719-11.227c-0.078125-0.54297 0.29688-1.0547 0.84375-1.1328z" fill-rule="evenodd"/>
+                        </g>
+
+                        <!-- Left page instruction panel -->
+                        <rect x="34" y="105" width="140" height="400" rx="3" fill="var(--color-h1)" opacity="0.92"/>
+                        <text style="font-family:'Open Sans',sans-serif; font-size:11px; fill:#ffff00; font-weight:700; text-transform:uppercase; letter-spacing:1.2px;" x="105" y="127" text-anchor="middle">Steps</text>
+                        <line x1="14" y1="100" x2="130" y2="110" stroke="var(--color-inverse-text)" stroke-width="0.5" opacity="0.4"/>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text);" x="24" y="152">
+                            <tspan x="50" dy="0" font-weight="600">1. Reach In</tspan>
+                            <tspan x="56" dy="14">Select one object from</tspan>
+                            <tspan x="56" dy="13">the bag without looking.</tspan>
+                        </text>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text);" x="24" y="202">
+                            <tspan x="50" dy="0" font-weight="600">2. Explore</tspan>
+                            <tspan x="50" dy="14">Feel the object. Notice</tspan>
+                            <tspan x="50" dy="13">its texture, weight,</tspan>
+                            <tspan x="50" dy="13">temperature, and shape.</tspan>
+                        </text>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text);" x="24" y="270">
+                            <tspan x="50" dy="0" font-weight="600">3. Name It</tspan>
+                            <tspan x="50" dy="14">What do you think it is?</tspan>
+                            <tspan x="50" dy="13">Say it aloud before</tspan>
+                            <tspan x="50" dy="13">looking.</tspan>
+                        </text>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text);" x="24" y="342">
+                            <tspan x="50" dy="0" font-weight="600">4. Draw</tspan>
+                            <tspan x="50" dy="14">Draw what you imagined.</tspan>
+                            <tspan x="50" dy="13">Then draw what you see.</tspan>
+                        </text>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text);" x="14" y="390">
+                            <tspan x="50" dy="0" font-weight="600">5. Reflect</tspan>
+                            <tspan x="50" dy="14">How did what you felt</tspan>
+                            <tspan x="50" dy="13">shape what you expected?</tspan>
+                        </text>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:9px; fill:var(--color-inverse-text);" x="14" y="440">
+                            <tspan x="50" dy="0" font-weight="600">6. Discuss</tspan>
+                            <tspan x="50" dy="14">What changed when</tspan>
+                            <tspan x="50" dy="13">emotion was introduced?</tspan>
+                        </text>
+
+                        <!-- Right page content -->
+                        <text style="font-family:'Open Sans',sans-serif; font-size:11px; fill:var(--divider-color); font-weight:600; text-transform:uppercase; letter-spacing:1.5px;" x="510" y="36">Activity Overview</text>
+                        <line x1="510" y1="46" x2="935" y2="46" stroke="var(--divider-color)" stroke-width="1"/>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:14px; fill:var(--color-h1);" x="510" y="74">
+                            <tspan x="510" dy="0">This interactive activity demonstrates how emotional states</tspan>
+                            <tspan x="510" dy="22">(e.g., affect) influence cognitive processes, specifically visual</tspan>
+                            <tspan x="510" dy="22">perception and object representation. Through a series of</tspan>
+                            <tspan x="510" dy="22">hidden object representation and identification tasks,</tspan>
+                            <tspan x="510" dy="22">participants will experience how affect shapes attention,</tspan>
+                            <tspan x="510" dy="22">encoding, and memory retrieval.</tspan>
+                        </text>
+
+                        <!-- Learning Objectives -->
+                        <text style="font-family:'Open Sans',sans-serif; font-size:15px; fill:var(--color-h1); font-weight:700;" x="510" y="230">Learning Objectives</text>
+                        <line x1="510" y1="242" x2="935" y2="242" stroke="var(--divider-color)" stroke-width="1"/>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:13px; fill:var(--color-h1);" x="510" y="268">
+                            <tspan x="530" dy="0">&#8226;  Identify the influence of emotional states on perceptual</tspan>
+                            <tspan x="540" dy="20">processes and attention.</tspan>
+                            <tspan x="530" dy="26">&#8226;  Explain how affect impacts encoding and retrieval of</tspan>
+                            <tspan x="540" dy="20">information in clinical contexts.</tspan>
+                            <tspan x="530" dy="26">&#8226;  Understand why working with clients experiencing elevated</tspan>
+                            <tspan x="540" dy="20">emotions requires special accommodations.</tspan>
+                        </text>
+
+                        <!-- Materials Needed -->
+                        <text style="font-family:'Open Sans',sans-serif; font-size:15px; fill:var(--color-h1); font-weight:700;" x="510" y="420">Materials Needed</text>
+                        <line x1="510" y1="432" x2="935" y2="432" stroke="var(--divider-color)" stroke-width="1"/>
+
+                        <text style="font-family:'Open Sans',sans-serif; font-size:13px; fill:var(--color-h1);" x="510" y="458">
+                            <tspan x="530" dy="0">&#8226;  Bag with diverse hidden objects</tspan>
+                            <tspan x="530" dy="24">&#8226;  Drawing paper and drawing instruments</tspan>
+                            <tspan x="530" dy="24">&#8226;  Music (optional)</tspan>
+                        </text>
+
+                        <!-- Left braille strip -->
+                        <rect x="0" y="545" width="475" height="35" fill="var(--color-h1)"/>
+                        <circle cx="30" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="38" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="30" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="50" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="58" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="50" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="58" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="70" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="70" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="78" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="90" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="98" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="98" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="110" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="118" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="130" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="138" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="130" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="138" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="150" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="158" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="170" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="178" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="170" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="200" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="208" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="220" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="228" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="220" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="260" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="268" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="260" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="268" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="300" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="308" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="308" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="330" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="338" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="350" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="358" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="350" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="380" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="388" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="380" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="388" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="410" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="418" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="410" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="430" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="438" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <!-- Right braille strip -->
+                        <rect x="485" y="545" width="475" height="35" fill="var(--color-h1)"/>
+                        <circle cx="510" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="518" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="510" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="530" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="538" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="550" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="558" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="550" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="558" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="570" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="570" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="578" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="590" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="598" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="598" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="620" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="628" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="640" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="648" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="640" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="660" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="668" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="660" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="668" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="680" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="688" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="700" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="708" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="700" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="730" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="738" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="750" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="758" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="758" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="770" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="778" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="770" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="778" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="810" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="818" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="818" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="840" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="848" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="860" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="868" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="860" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="890" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="898" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                        <circle cx="910" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="918" cy="556" r="2.5" fill="var(--color-inverse-text)"/><circle cx="910" cy="564" r="2.5" fill="var(--color-inverse-text)"/><circle cx="918" cy="564" r="2.5" fill="var(--color-inverse-text)"/>
+                    </svg>
+                </div>
+
+                </div><!-- end product-layout -->
+            </section>
+        </div>
+    </div>
+
+</body>
+</html>
